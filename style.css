@@ -35,6 +35,10 @@ a {
     text-decoration: none;
 }
 
+a:hover {
+    color: #22619f;
+}
+
 div#container, #header, div#content, div#content .padder, div#sidebar, div.item-list-tabs ul li.selected a, div.item-list-tabs ul li.current a, form#whats-new-form textarea {
     -moz-border-radius: 0;
 	-webkit-border-radius: 0;
@@ -178,27 +182,48 @@ body #subnav ul li {
     margin: 0 0 10px;
 }
 
+
+.acomment-options a {
+	font-weight: normal; 
+	text-shadow: none; 
+}
+
+.acomment-options a:hover {
+	 text-shadow: none; 
+}
+
+
+
 a.bp-primary-action, .comment-reply-link, #reply-title small a, div.activity-meta a.acomment-reply {
 	background: #fff9db;
 	border-bottom: none;
 	-moz-border-radius: 0;
 	-webkit-border-radius: 0;
 	border-radius: 0;
-	border-right: none;
 	color: #ffa200;
+	border: none; 
 }
 
-div.activity-meta a.acomment-reply:hover { 
+div.activity-meta a.acomment-reply:hover, .activity-comments a.acomment-reply:hover { 
 	background: #ffa200; 
 	color: #fff; 
+}
+
+a.bp-primary-action span, .comment-reply-link span, #reply-title small a span, div.activity-meta a.acomment-reply span {
+	background: #ffa200; 
+}
+a.bp-primary-action:hover span, .comment-reply-link:hover span, #reply-title small a:hover span, div.activity-meta a.acomment-reply:hover span {
+	background: #b77604; 
 }
 
 a.bp-secondary-action, span.highlight, div.activity-meta a.fav, div.activity-meta a.unfav {
     background: #EBF7FF;
     border-bottom: 0;
-    border-radius: 0;
-    border-right: 0;
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+	border-radius: 0;
     color: #059AE7;
+    border: none; 
 }
 
 div.activity-meta a.fav:hover, div.activity-meta a.unfav:hover {
@@ -206,14 +231,19 @@ div.activity-meta a.fav:hover, div.activity-meta a.unfav:hover {
 	color: #fff; 
 }
 
-body a.delete-activity, .bp-secondary-action.acomment-delete {
+body a.delete-activity, .bp-secondary-action.acomment-delete, body a.delete-activity-single {
    background: #ffd1d1;
    color: #f91616;
+   border: none; 
+   	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+	border-radius: 0;
 }
 
-body a.delete-activity:hover, .bp-secondary-action.acomment-delete:hover {
+body a.delete-activity:hover, .bp-secondary-action.acomment-delete:hover, body a.delete-activity-single:hover {
    background: #f91616;
    color: #FFF;
+   border: none; 
 }
 
 div.item-list-tabs ul li {
@@ -456,7 +486,7 @@ a.button {
 }
 
 div#message.updated {
-	margin: -30px auto 0;  
+	margin: -10px auto 0;  
 	max-width: 960px; 
 }
 
@@ -569,7 +599,7 @@ body #subnav ul li a {
 }
 
 body #subnav ul li a:hover {
-	background: #f3f3f3; 
+	background-color: #f3f3f3; 
 	color: #555; 
 }
 
@@ -586,7 +616,7 @@ li span.unread-count, tr.unread span.unread-count {
     background: #A6B909;
 }
 
-#item-header #bp_before_member_header img.avatar, #item-header #bp_before_group_header img.avatar {
+#item-header #bp_before_member_header img.avatar, #item-header #bp_before_group_header img.avatar, body.activity-permalink .activity-list li .activity-avatar img.avatar {
     float: left;
     margin: 5px 15px 19px 5px;
     border: 8px solid #fff; 
@@ -595,6 +625,10 @@ li span.unread-count, tr.unread span.unread-count {
 	-moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset; 
 	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
 }
+
+body.activity-permalink .activity-list li .activity-content {
+	margin-left: 160px; 
+	}
 
 div#item-header #bp_before_member_header #item-header-content {
     margin-left: 200px;
@@ -636,8 +670,8 @@ span.activity, div#message p {
 	-moz-border-radius: 0;
 	-webkit-border-radius: 0;
 	border-bottom-radius: 0;
-    border-bottom: none;
-    border-right: none;
+    border: none;
+    border: none;
     color: #888;
     font-weight: normal;
     margin-top: 3px;
@@ -645,7 +679,7 @@ span.activity, div#message p {
 }
 
 #item-header div#message p {
-	background: #dcdcdc; 
+	background: #FFFDD0; 
 	color: #666;
 }
 
@@ -656,6 +690,7 @@ span.activity, div#message p {
 div.activity-meta a {
     padding:2px 5px;
     margin-right: 3px; 
+    text-shadow: none; 
 }
 
 .standard-form textarea, .standard-form input[type="text"], .standard-form select, .standard-form input[type="password"], .dir-search input[type="text"] {
@@ -700,9 +735,20 @@ span.user-nicename, #item-header-content span.highlight {
 	border: 2px solid #FFF; 
 }
 
-div#item-header div#item-header-content {
-	margin-left: 200px; 
+body.activity-permalink .activity-list li .activity-content, body.activity-permalink div.activity-comments {
+	margin-left: 160px; 
 }
+
+body.activity-permalink ul#activity-stream { margin-top: 3em; }
+
+#whats-new-options {
+    width: 94%;
+}
+
+#message.updated {
+
+}
+
 
 /* This is a temporary hack to fill in the background on directory pages with color. */
 body.directory.groups div#content .padder, body.directory.members div#content .padder, body.directory.blogs div#content .padder, body.directory.forums div#content .padder, body.directory.activity div#content .padder, .group-create div#content .padder {
@@ -772,6 +818,9 @@ px      68    160    252    */
 	#bp_before_member_header div#item-header h2 span.highlight { display: none; }
 	div#item-header #bp_before_member_header h2 span.highlight { display: none; }
 	#header h1 { margin-left: 0; }
+	body.activity-permalink .activity-list li .activity-avatar img.avatar {height: 60px !important; width: 60px !important; }
+	body.activity-permalink .activity-list li .activity-content, body.activity-permalink div.activity-comments {margin-left: 90px; }
+	body.activity-permalink .activity-list li .activity-header > p { background: none; }
 }
 
 
@@ -811,6 +860,7 @@ px      68    160    252    344    436    */
 	div#item-header #bp_before_member_header h2 span.highlight { display: none; }
 	#search-form { margin-top: 8px; }
 	#header h1 { margin-left: 0; }
-	
-}
+	body.activity-permalink .activity-list li .activity-avatar img.avatar {height: 60px !important; width: 60px !important; }
+	body.activity-permalink .activity-list li .activity-content, body.activity-permalink div.activity-comments {margin-left: 110px; }
+	}
 
