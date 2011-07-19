@@ -24,29 +24,9 @@ body {
     max-width: 10000px;
     min-width: 960px;
     width: 100%;
-    background-color: #EEEEEE;
+    background-color: #eee;
     background-image: none;
     font-family:  "Helvetica Neue",Helvetica,Arial,sans-serif;
-}
-
-a {
-    color: #4183C4;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-a:hover {
-    color: #22619f;
-}
-
-div#container, #header, div#content, div#content .padder, div#sidebar, div.item-list-tabs ul li.selected a, div.item-list-tabs ul li.current a, form#whats-new-form textarea {
-    -moz-border-radius: 0;
-	-webkit-border-radius: 0;
-	border-radius: 0;
-}
-
-div#container, div#content .padder, div#sidebar {
-    border: none;
 }
 
 .fullwidth, body#bp-default #wp-admin-bar .padder {
@@ -54,19 +34,6 @@ div#container, div#content .padder, div#sidebar {
 	width: 100% !important; 
 	max-width: 10000px;
 	min-width: 960px;
-}
-
-body #subnav ul li a {
-    color: #999999;
-}
-
-div#content .padder {
-	margin-right: 0; 
-}
-	
-#header {
-	margin-bottom: 0; 
-	height: auto; 
 }
 
 #header #search-bar .padder, #header #navigation, #bp_before_activity_post_form, #bp_before_container .activity, #forums-search-form, #blogs-directory-form, div.item-list-tabs ul, #bp_before_member_header, body div#new-topic-post, #create-group-form h3, #group-create-body, #bp_before_group_header, #groups-directory-form, #members-directory-form {
@@ -82,6 +49,74 @@ div#content .padder {
 	background: #EAEAEA; 
 }
 
+#forums-dir-list, #groups-dir-list, #members-dir-list, #blogs-dir-list { 
+	max-width: 960px; 
+    margin: 0 auto 19px;
+    overflow: visible; 
+    position: relative; 
+    overflow-x:visible; /* safari bug? */ 
+}
+
+a {
+    color: #4183C4;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #22619f;
+}
+
+a.button { 
+	letter-spacing: 0; 
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.05em;
+    line-height: 1em;
+	color: #343b3e;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+h1 {
+    font-size: 3.4em;
+}
+
+h2 {
+    font-size: 2.8em;
+}
+
+h3 {
+    font-size: 2.4em;
+}
+
+h4 {
+    font-size: 1.6em;
+}
+
+h5 {
+    font-size: 1.3em;
+}
+
+h6 {
+    font-size: 1.1em;
+}
+
+div#container, div#content .padder, div#sidebar {
+    border: none;
+}
+
+div#container, #header, div#content, div#content .padder, div#sidebar, div.item-list-tabs ul li.selected a, div.item-list-tabs ul li.current a, form#whats-new-form textarea, a.bp-primary-action, .comment-reply-link, #reply-title small a, div.activity-meta a.acomment-reply {
+    -moz-border-radius: 0;
+	-webkit-border-radius: 0;
+	border-radius: 0;
+}
+
+div#content .padder {
+	margin-right: 0; 
+}
+	
 #create-group-form h3, a.button {
 	line-height: 26px;
 	padding-bottom: 12px; 
@@ -90,19 +125,6 @@ div#content .padder {
 
 body #group-create-tabs ul li span {
     color: #eee;
-}
-
-#forums-dir-list, #groups-dir-list, #members-dir-list, #blogs-dir-list { 
-	max-width: 960px; 
-    margin: 0 auto 19px;
-    overflow: visible; 
-    position: relative;  
-}
-
-div#subnav.item-list-tabs { 
-	max-width: 960px; 
-	margin: 0 auto 15px auto;  
-	padding-bottom: 10px; 
 }
 
 .my-activity div#subnav.item-list-tabs, .group-home div#subnav.item-list-tabs { 
@@ -129,7 +151,7 @@ div.item-list-tabs ul {
     margin-bottom: -1px;
     overflow: hidden;
     position: relative;
-	overflow-x:hidden;
+	overflow-x:hidden; /* safari bug? */
 }
 
 div.item-list-tabs ul li {
@@ -173,15 +195,24 @@ div.item-list-tabs ul li a span {
     padding: 2px 10px;
 }
 
+div#subnav.item-list-tabs { 
+	max-width: 960px; 
+	margin: 0 auto 15px auto;  
+	padding-bottom: 10px; 
+}
+
 body #subnav ul li {
     background: transparent;
     border: none;
 }
 
+body #subnav ul li a {
+    color: #999999;
+}
+
 #item-body form#whats-new-form {
     margin: 0 0 10px;
 }
-
 
 .acomment-options a {
 	font-weight: normal; 
@@ -192,14 +223,9 @@ body #subnav ul li {
 	 text-shadow: none; 
 }
 
-
-
 a.bp-primary-action, .comment-reply-link, #reply-title small a, div.activity-meta a.acomment-reply {
 	background: #fff9db;
 	border-bottom: none;
-	-moz-border-radius: 0;
-	-webkit-border-radius: 0;
-	border-radius: 0;
 	color: #ffa200;
 	border: none; 
 }
@@ -250,9 +276,6 @@ div.item-list-tabs ul li {
 	border-bottom: none; 
 }
 	
-/*--------------------------------------------------------------
-2.2 - Header
---------------------------------------------------------------*/
 #header {
 	background: #fff; 
 	-moz-border-radius: 0;
@@ -264,7 +287,6 @@ div.item-list-tabs ul li {
 	padding: 0; 
 	border-bottom: 1px solid #ccc; 
 }
-
 
 #header #search-bar {
 	min-height: 75px; 
@@ -422,50 +444,19 @@ div.item-list-tabs {
 }
     	
 #nav > li.current-menu-item a, #nav > li.current_page_item a, nav li.selected a {
-	   	-moz-box-shadow:inset 0 0 1px #AAA;
-   		-webkit-box-shadow:inset 0 0 1px #AAA;
-   		box-shadow:inset 0 0 1px #AAA;
-   		color: #444;  
-   		background: #ebebeb; 
-		background: -moz-linear-gradient(top, #ebebeb 0%, #ebebeb 15%, #dadada 100%); /* FF3.6+ */
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ebebeb), color-stop(15%,#ebebeb), color-stop(100%,#dadada)); /* Chrome,Safari4+ */
-		background: -webkit-linear-gradient(top, #ebebeb 0%,#ebebeb 15%,#dadada 100%); /* Chrome10+,Safari5.1+ */
-		background: -o-linear-gradient(top, #ebebeb 0%,#ebebeb 15%,#dadada 100%); /* Opera11.10+ */
-		background: -ms-linear-gradient(top, #ebebeb 0%,#ebebeb 15%,#dadada 100%); /* IE10+ */
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebebeb', endColorstr='#dadada',GradientType=0 ); /* IE6-9 */
-		background: linear-gradient(top, #ebebeb 0%,#ebebeb 15%,#dadada  100%); /* W3C */
+   	-moz-box-shadow:inset 0 0 1px #AAA;
+	-webkit-box-shadow:inset 0 0 1px #AAA;
+	box-shadow:inset 0 0 1px #AAA;
+	color: #444;  
+	background: #ebebeb; 
+	background: -moz-linear-gradient(top, #ebebeb 0%, #ebebeb 15%, #dadada 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ebebeb), color-stop(15%,#ebebeb), color-stop(100%,#dadada)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #ebebeb 0%,#ebebeb 15%,#dadada 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #ebebeb 0%,#ebebeb 15%,#dadada 100%); /* Opera11.10+ */
+	background: -ms-linear-gradient(top, #ebebeb 0%,#ebebeb 15%,#dadada 100%); /* IE10+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebebeb', endColorstr='#dadada',GradientType=0 ); /* IE6-9 */
+	background: linear-gradient(top, #ebebeb 0%,#ebebeb 15%,#dadada  100%); /* W3C */
 }	
-
-h1, h2, h3, h4, h5, h6 {
-    letter-spacing: -0.05em;
-    line-height: 1em;
-	color: #343b3e;
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-}
-
-h1 {
-    font-size: 3.4em;
-}
-
-h2 {
-    font-size: 2.8em;
-}
-
-h3 {
-    font-size: 2.4em;
-}
-
-h4 {
-    font-size: 1.6em;
-}
-
-h5 {
-    font-size: 1.3em;
-}
-
-h6 {
-    font-size: 1.1em;
-}
 
 div#item-header h2 a {
     font-size: 1.4em;
@@ -481,9 +472,6 @@ div#item-header h2 a {
 	max-width: 960px; 
 }
 
-a.button { 
-	letter-spacing: 0; 
-}
 
 div#message.updated {
 	margin: -10px auto 0;  
@@ -745,17 +733,11 @@ body.activity-permalink ul#activity-stream { margin-top: 3em; }
     width: 94%;
 }
 
-#message.updated {
-
-}
-
-
 /* This is a temporary hack to fill in the background on directory pages with color. */
 body.directory.groups div#content .padder, body.directory.members div#content .padder, body.directory.blogs div#content .padder, body.directory.forums div#content .padder, body.directory.activity div#content .padder, .group-create div#content .padder {
     background: url("images/bg-temp-hack.png") repeat-x scroll left top transparent;
-    overflow: visible; 
-}
 
+}
 
 /* The media queries below were taken from Less Framework (http://lessframework.com/). I think the strategy here will be to make minor adjustments to make the theme work across all devices. But ideally the CSS above can be improved to make this less important. */
 
@@ -773,7 +755,6 @@ px      68    160    252    344    436    528    620    712    */
 	body {
 		min-width: 100%;
 	}
-	
 	.fullwidth {
 		min-width: 100%;
 	}
@@ -802,10 +783,8 @@ px      68    160    252    */
 		max-width: 320px;
 		min-width: 320px;
 	}
-	
 	.activity-list .activity-content .activity-header img.avatar { display: none; }
 	div.item-list-tabs ul li, div.item-list-tabs ul li:first-child { margin-left: 1px; }
-
 	div#item-header #bp_before_member_header #item-header-content { margin-left: 0; }
 	#search-form { margin-top: 0; }
 	#nav { margin-right: 1em; }
@@ -822,7 +801,6 @@ px      68    160    252    */
 	body.activity-permalink .activity-list li .activity-content, body.activity-permalink div.activity-comments {margin-left: 90px; }
 	body.activity-permalink .activity-list li .activity-header > p { background: none; }
 }
-
 
 /*		Wide Mobile Layout: 480px.
 		Gutters: 24px.
@@ -844,7 +822,6 @@ px      68    160    252    344    436    */
 		max-width: 480px;
 		min-width: 480px;
 	}	
-	
 	.activity-list .activity-content .activity-header img.avatar { display: none; }
 	div.item-list-tabs ul li, div.item-list-tabs ul li:first-child { margin-left: 1px; }
 	div.item-list-tabs ul li a, div.item-list-tabs ul li span {display: block; padding: 2px 8px;} 
@@ -861,6 +838,5 @@ px      68    160    252    344    436    */
 	#search-form { margin-top: 8px; }
 	#header h1 { margin-left: 0; }
 	body.activity-permalink .activity-list li .activity-avatar img.avatar {height: 60px !important; width: 60px !important; }
-	body.activity-permalink .activity-list li .activity-content, body.activity-permalink div.activity-comments {margin-left: 110px; }
-	}
-
+	body.activity-permalink .activity-list li .activity-content, body.activity-permalink div.activity-comments {margin-left: 110px; }	
+}
