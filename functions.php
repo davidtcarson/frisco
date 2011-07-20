@@ -163,11 +163,5 @@ add_action ( 'bp_directory_members_content', 'form_bp_directory_members_content'
 
 
 
-	
-
-
-
-
-
 
 ?>
