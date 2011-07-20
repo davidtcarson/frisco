@@ -56,41 +56,6 @@ body {
     overflow-x:visible; /* safari bug? */ 
 }
 
-body.page div#container, body.blog div#container, body.single div#container, body.archive div#container {
-	width: 960px; 
-	margin: 20px auto; 
-	-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
-	-moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset; 
-	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
-}
-
-body.page div#content .padder, body.blog div#content .padder, body.single div#content .padder, body.archive div#content .padder {
-	margin-right: 226px; 
-	background: #fff; 
-}
-
-body.page #content, body.blog div#content, body.single div#content, body.archive div#content {
-	background: #eaeaea; 
-}
-
-div#sidebar {
-	width: 226px; 
-	background: #eaeaea; 
-	background: -moz-linear-gradient(top, #f2f2f2 0%, #f2f2f2 75%, #eaeaea 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f2f2f2), color-stop(75%,#f2f2f2), color-stop(100%,#eaeaea)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, #f2f2f2 0%,#f2f2f2 75%,#eaeaea 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top, #f2f2f2 0%,#f2f2f2 75%,#eaeaea 100%); /* Opera11.10+ */
-	background: -ms-linear-gradient(top, #f2f2f2 0%,#f2f2f2 75%,#eaeaea 100%); /* IE10+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f2f2', endColorstr='#eaeaea',GradientType=0 ); /* IE6-9 */
-	background: linear-gradient(top, #f2f2f2 0%,#f2f2f2 75%,#eaeaea 100%); /* W3C */
-	border: none; 
-	margin-top: 0; 
-}
-
-div#sidebar h3.widgettitle {
-    background: 0 0 rgba(0, 0, 0, 0.1);
-}
-
 a {
     color: #4183C4;
     font-weight: bold;
@@ -111,11 +76,6 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1em;
 	color: #343b3e;
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-}
-
-div.author-box, p.date span:first-child, p.date, p.postmetadata {
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-	font-style: normal; 
 }
 
 h1 {
@@ -154,6 +114,7 @@ div#container, #header, div#content, div#content .padder, div#sidebar, div.item-
 
 div#content .padder {
 	margin-right: 0; 
+
 }
 	
 #create-group-form h3, a.button {
@@ -527,6 +488,10 @@ div#message.updated p {
     border-left: 10px solid #ffde00; 
 }
 
+body.page #content {
+	background: #EAEAEA; 
+}
+
 form#whats-new-form textarea {
 	background: #fff;
 	border: 1px solid #ccc;
@@ -792,11 +757,11 @@ body.activity-permalink ul#activity-stream { margin-top: 3em; }
 	background: transparent; 
 }
 
-#footer-widget-area div.item-options, #sidebar div.item-options {
+#footer-widget-area div.item-options {
 	border-bottom:  1px solid #ccc;
 }
 
-#footer-widget-area h3.widgettitle, #sidebar h3.widgettitle {
+#footer-widget-area h3.widgettitle {
 	background: rgba(0,0,0,0.1);  /* 50% transparent */
     font-size: 1.2em; 
     letter-spacing: 0; 
@@ -805,47 +770,25 @@ body.activity-permalink ul#activity-stream { margin-top: 3em; }
     text-transform: uppercase; 
 }
 
-#footer-widget-area a, #sidebar a {
+#footer-widget-area a {
 	text-shadow: 0 1px 0 #f7f7f7; 
 }
 
-#footer-widget-area img.avatar, #sidebar img.avatar {
+#footer-widget-area img.avatar {
     border: 2px solid #fff;
 }
 
-#footer-widget-area ul.item-list, #sidebar ul.item-list {
+#footer-widget-area ul.item-list {
 	border-bottom: 1px solid #fff; 
 }
 
-#footer-widget-area ul.item-list li, #sidebar ul.item-list li {
+#footer-widget-area ul.item-list li {
 	border-bottom: 1px solid #ccc;
 	border-top: 1px solid #fff; 
 }
 
 #site-generator { 
 	margin-top: 30px; 
-}
-
-.blog #blog-latest .post {
-	padding: 18px 20px;
-}
-
-.sticky.post {
-    background:#fffdd0;
-    border-top: 4px solid #fcf899;
-}
-
-.sticky.post div.author-box {
-	background: #fcf899;
-}
-
-.sticky.post  p.date, .sticky.post p.postmetadata {
-    border-bottom: 1px solid #fcf899;
-    border-top: 1px solid #fcf899;
-}
-.sticky.post .date {
-	color: #999; 
-    background: transparent; 
 }
 
 /* This is a temporary hack to fill in the background on directory pages with color. */
