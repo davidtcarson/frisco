@@ -16,7 +16,6 @@
 @import url( ../../plugins/buddypress/bp-themes/bp-default/_inc/css/default.css );
 @import url( ../../plugins/buddypress/bp-core/css/buddybar.css );
 
-
 /* This CSS needs some serious work. It will be cleaned up and optimized in future versions. */
 
 body {
@@ -36,7 +35,7 @@ body {
 	min-width: 960px;
 }
 
-#header #search-bar .padder, #header #navigation, #bp_before_activity_post_form, #bp_before_container .activity, #forums-search-form, #blogs-directory-form, div.item-list-tabs ul, #bp_before_member_header, body div#new-topic-post, #create-group-form h3, #group-create-body, #bp_before_group_header, #groups-directory-form, #members-directory-form {
+#header #search-bar .padder, #header #navigation, #bp_before_activity_post_form, #bp_before_container .activity, #forums-search-form, #blogs-directory-form, div.item-list-tabs ul, #bp_before_member_header, body div#new-topic-post, #create-group-form h3, #group-create-body, #bp_before_group_header, #groups-directory-form, #members-directory-form, #footer-widget-area {
     max-width: 960px; 
     margin: 0 auto; 
     overflow: hidden; 
@@ -107,7 +106,7 @@ div#container, div#content .padder, div#sidebar {
     border: none;
 }
 
-div#container, #header, div#content, div#content .padder, div#sidebar, div.item-list-tabs ul li.selected a, div.item-list-tabs ul li.current a, form#whats-new-form textarea, a.bp-primary-action, .comment-reply-link, #reply-title small a, div.activity-meta a.acomment-reply {
+div#container, #header, div#content, div#content .padder, div#sidebar, div.item-list-tabs ul li.selected a, div.item-list-tabs ul li.current a, form#whats-new-form textarea, a.bp-primary-action, .comment-reply-link, #reply-title small a, div.activity-meta a.acomment-reply, #footer-widgets {
     -moz-border-radius: 0;
 	-webkit-border-radius: 0;
 	border-radius: 0;
@@ -115,6 +114,7 @@ div#container, #header, div#content, div#content .padder, div#sidebar, div.item-
 
 div#content .padder {
 	margin-right: 0; 
+
 }
 	
 #create-group-form h3, a.button {
@@ -220,7 +220,7 @@ body #subnav ul li a {
 }
 
 .acomment-options a:hover {
-	 text-shadow: none; 
+	text-shadow: none; 
 }
 
 a.bp-primary-action, .comment-reply-link, #reply-title small a, div.activity-meta a.acomment-reply {
@@ -267,9 +267,9 @@ body a.delete-activity, .bp-secondary-action.acomment-delete, body a.delete-acti
 }
 
 body a.delete-activity:hover, .bp-secondary-action.acomment-delete:hover, body a.delete-activity-single:hover {
-   background: #f91616;
-   color: #FFF;
-   border: none; 
+	background: #f91616;
+	color: #FFF;
+	border: none; 
 }
 
 div.item-list-tabs ul li {
@@ -528,7 +528,9 @@ a.button, button, input[type="submit"], input[type="reset"], input[type="button"
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fbfbfb', endColorstr='#cdcdcd',GradientType=0 ); /* IE6-9 */
 	background: linear-gradient(top, #fbfbfb 0%,#cdcdcd  100%); /* W3C */
     border-color: #CCC #AAA #AAA #CCC;
-    border-radius: 3px 3px 3px 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
     border-right: 1px solid #AAA;
     border-style: solid;
     border-width: 1px;
@@ -733,6 +735,62 @@ body.activity-permalink ul#activity-stream { margin-top: 3em; }
     width: 94%;
 }
 
+#footer {
+	margin: 0; 
+	padding-bottom: 20px; 
+	background: #EAEAEA; 
+	background: -moz-linear-gradient(top, #EAEAEA 0%, #EAEAEA 75%, #d2d3d4 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#EAEAEA), color-stop(75%,#EAEAEA), color-stop(100%,#d9dadb)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #EAEAEA 0%,#EAEAEA 75%,#d2d3d4 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #EAEAEA 0%,#EAEAEA 75%,#d2d3d4 100%); /* Opera11.10+ */
+	background: -ms-linear-gradient(top, #EAEAEA 0%,#EAEAEA 75%,#d2d3d4 100%); /* IE10+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#EAEAEA', endColorstr='#d2d3d4',GradientType=0 ); /* IE6-9 */
+	background: linear-gradient(top, #EAEAEA 0%,#EAEAEA 75%,#d2d3d4 100%); /* W3C */	
+}
+
+#footer-widgets {
+	border: none; 
+	background: transparent; 
+	padding: 0; 
+}
+#footer-widget-area div.item-options, div#sidebar div.item-options {
+	background: transparent; 
+}
+
+#footer-widget-area div.item-options {
+	border-bottom:  1px solid #ccc;
+}
+
+#footer-widget-area h3.widgettitle {
+	background: rgba(0,0,0,0.1);  /* 50% transparent */
+    font-size: 1.2em; 
+    letter-spacing: 0; 
+    padding: 10px 15px; 
+    text-shadow: 0 1px 0 #f7f7f7; 
+    text-transform: uppercase; 
+}
+
+#footer-widget-area a {
+	text-shadow: 0 1px 0 #f7f7f7; 
+}
+
+#footer-widget-area img.avatar {
+    border: 2px solid #fff;
+}
+
+#footer-widget-area ul.item-list {
+	border-bottom: 1px solid #fff; 
+}
+
+#footer-widget-area ul.item-list li {
+	border-bottom: 1px solid #ccc;
+	border-top: 1px solid #fff; 
+}
+
+#site-generator { 
+	margin-top: 30px; 
+}
+
 /* This is a temporary hack to fill in the background on directory pages with color. */
 body.directory.groups div#content .padder, body.directory.members div#content .padder, body.directory.blogs div#content .padder, body.directory.forums div#content .padder, body.directory.activity div#content .padder, .group-create div#content .padder {
     background: url("images/bg-temp-hack.png") repeat-x scroll left top transparent;
@@ -800,6 +858,7 @@ px      68    160    252    */
 	body.activity-permalink .activity-list li .activity-avatar img.avatar {height: 60px !important; width: 60px !important; }
 	body.activity-permalink .activity-list li .activity-content, body.activity-permalink div.activity-comments {margin-left: 90px; }
 	body.activity-permalink .activity-list li .activity-header > p { background: none; }
+	#footer-widget-area div.widget-area > ul {margin-right: 0; width: 100%; }
 }
 
 /*		Wide Mobile Layout: 480px.
@@ -839,4 +898,6 @@ px      68    160    252    344    436    */
 	#header h1 { margin-left: 0; }
 	body.activity-permalink .activity-list li .activity-avatar img.avatar {height: 60px !important; width: 60px !important; }
 	body.activity-permalink .activity-list li .activity-content, body.activity-permalink div.activity-comments {margin-left: 110px; }	
+	#footer-widget-area div.widget-area > ul {margin-right: 0; width: 50%; }
+	#third.widget-area { clear:left;  }
 }
