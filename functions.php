@@ -1,5 +1,16 @@
 <?php
 
+	 /*
+     * Google Font for cursive header title. This will change for sure to make it easier for users to change. 
+     */
+add_action('wp_print_styles', 'add_googlefonts');
+function add_googlefonts() {
+        $givemetypography = 'http://fonts.googleapis.com/css?family=Lobster+Two&v2';
+       
+            wp_register_style('googlewebfonts', $givemetypography);
+            wp_enqueue_style( 'googlewebfonts');
+}
+
 // special thanks to Less Framework (http://lessframework.com/)
 function go_responsive() {
 	?>
@@ -8,12 +19,10 @@ function go_responsive() {
 }
 add_action ( 'bp_head', 'go_responsive' );
 		
-	
 function bp_dtheme_enqueue_styles() {
        //nothing to see here
 }
 add_action( 'wp_print_styles', 'bp_dtheme_enqueue_styles' );
-
 
 function my_deregister_styles() {
 	wp_deregister_style( 'bp-admin-bar' );
@@ -23,15 +32,36 @@ add_action( 'wp_print_styles', 'my_deregister_styles', 100 );
 
 
     /*
-     * Google Font for cursive header title. This will change for sure to make it easier for users to change. 
+     * LessCSS for easy color changes.  
      */
-add_action('wp_print_styles', 'add_googlefonts');
-function add_googlefonts() {
-        $givemelobster = 'http://fonts.googleapis.com/css?family=Lobster+Two:400,400italic,700,700italic&v2';
-       
-            wp_register_style('lobstertwo', $givemelobster);
-            wp_enqueue_style( 'lobstertwo');
+add_action('wp_print_styles', 'add_lesscss');
+function add_lesscss() {
+
+	wp_register_style('lesscss', get_bloginfo('stylesheet_directory') . '/css/styles.less');
+	wp_enqueue_style( 'lesscss');
 }
+
+add_action('init', 'add_lesscssjs');
+function add_lesscssjs() {
+    wp_register_script( 'lesscssjs', get_bloginfo('stylesheet_directory') . '/js/less-1.1.3.min.js');
+    wp_enqueue_script( 'lesscssjs' );
+
+}    
+
+// add rel="stylesheet/less" to any less stylesheet url
+// from http://plugins.svn.wordpress.org/template-provisioning/tags/0.2.5/template-provisioning.php
+add_filter('style_loader_tag', 'filter_style_link_tags_for_less_js', 10, 2);
+function filter_style_link_tags_for_less_js($tag, $handle)
+	{
+  	global $wp_styles;
+  	
+  	// if the src ends in ".less", the rel attribute should be "stylesheet/less"
+  	if (preg_match("/\.less$/", $wp_styles->registered[$handle]->src)) {
+  	  $tag = preg_replace("/rel=(['\"])[^'\"]*(['\"])/", "rel=$1stylesheet/less$2", $tag);
+  	}
+  	
+	  return $tag;
+	}
 
 
 // Batten down the hatches, we're going full-width... there's got to be a better way to make the theme full-width, but this will work in the meantime. Everything below is just inserting divs to help style a full-width background. 
@@ -160,5 +190,14 @@ function form_bp_directory_members_content() {
 	<?php
 }
 add_action ( 'bp_directory_members_content', 'form_bp_directory_members_content' );
+
+// Adds theme credit in footer.php. Delete it if you'd like.  
+function add_bp_dtheme_credits() {
+	?>
+		<p><?php printf( __( 'Made with a little help from the <a href="%1$s">Frisco Theme</a>.', 'buddypress' ), 'http://friscotheme.com' ) ?></p>
+	<?php
+}
+add_action ( 'bp_dtheme_credits', 'add_bp_dtheme_credits' );
+
 
 ?>
