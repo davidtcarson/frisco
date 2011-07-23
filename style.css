@@ -12,9 +12,8 @@
 */
 
 
-/* Inherit the default theme styles... I guess bp-default will now load these via functions.php in bp_dtheme_enqueue_styles... but that messes with the order of things so I've temporarily added a silent bp_dtheme_enqueue_styles to the functions.php here in the child theme. This will change I'm sure.  */
+/* Inherit the default theme styles... bp-default now loads stylesheets via functions.php in bp_dtheme_enqueue_styles... but that messes with the order of things so I've temporarily added a silent bp_dtheme_enqueue_styles to the functions.php here in the child theme. This will change I'm sure.  */
 @import url( ../../plugins/buddypress/bp-themes/bp-default/_inc/css/default.css );
-@import url( ../../plugins/buddypress/bp-core/css/buddybar.css );
 
 /* This CSS needs some serious work. It will be cleaned up and optimized in future versions. */
 
@@ -92,13 +91,8 @@ div#sidebar h3.widgettitle {
 }
 
 a {
-    color: #4183C4;
     font-weight: bold;
     text-decoration: none;
-}
-
-a:hover {
-    color: #22619f;
 }
 
 a.button { 
@@ -181,7 +175,7 @@ body #group-create-tabs ul li span {
 }
     
 div.item-list-tabs {
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #bbb;
     margin-top: 0;
     overflow: visible;  
 }
@@ -212,7 +206,7 @@ div.item-list-tabs ul li a:hover span {
 }
 
 div.item-list-tabs ul li.selected, div.item-list-tabs ul li.current {
-    border-color: #CCC;
+    border-color: #bbb;
 }
 
 div.item-list-tabs ul li a {
@@ -773,14 +767,14 @@ body.activity-permalink ul#activity-stream { margin-top: 3em; }
 #footer {
 	margin: 0; 
 	padding-bottom: 20px; 
-	background: #EAEAEA; 
-	background: -moz-linear-gradient(top, #EAEAEA 0%, #EAEAEA 75%, #d2d3d4 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#EAEAEA), color-stop(75%,#EAEAEA), color-stop(100%,#d9dadb)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, #EAEAEA 0%,#EAEAEA 75%,#d2d3d4 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top, #EAEAEA 0%,#EAEAEA 75%,#d2d3d4 100%); /* Opera11.10+ */
-	background: -ms-linear-gradient(top, #EAEAEA 0%,#EAEAEA 75%,#d2d3d4 100%); /* IE10+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#EAEAEA', endColorstr='#d2d3d4',GradientType=0 ); /* IE6-9 */
-	background: linear-gradient(top, #EAEAEA 0%,#EAEAEA 75%,#d2d3d4 100%); /* W3C */	
+	background: #313131; 
+	background: -moz-linear-gradient(top, #313131 0%, #313131 35%, #3c3c3c 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#313131), color-stop(35%,#313131), color-stop(100%,#3c3c3c)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #313131 0%,#313131 35%,#3c3c3c 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #313131 0%,#313131 35%,#3c3c3c 100%); /* Opera11.10+ */
+	background: -ms-linear-gradient(top, #313131 0%,#313131 35%,#3c3c3c 100%); /* IE10+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#313131', endColorstr='#3c3c3c',GradientType=0 ); /* IE6-9 */
+	background: linear-gradient(top, #313131 0%,#313131 35%,#3c3c3c 100%); /* W3C */	
 }
 
 #footer-widgets {
@@ -792,9 +786,14 @@ body.activity-permalink ul#activity-stream { margin-top: 3em; }
 	background: transparent; 
 }
 
-#footer-widget-area div.item-options, #sidebar div.item-options {
+#sidebar div.item-options {
 	border-bottom:  1px solid #ccc;
 }
+
+#footer-widget-area div.item-options {
+	border-bottom:  1px solid #000;
+}
+
 
 #footer-widget-area h3.widgettitle, #sidebar h3.widgettitle {
 	background: rgba(0,0,0,0.1);  /* 50% transparent */
@@ -805,7 +804,12 @@ body.activity-permalink ul#activity-stream { margin-top: 3em; }
     text-transform: uppercase; 
 }
 
-#footer-widget-area a, #sidebar a {
+#footer-widget-area h3.widgettitle {
+	text-shadow: none; 
+	color: #e1e1e1;
+}
+
+#sidebar a {
 	text-shadow: 0 1px 0 #f7f7f7; 
 }
 
@@ -813,17 +817,32 @@ body.activity-permalink ul#activity-stream { margin-top: 3em; }
     border: 2px solid #fff;
 }
 
-#footer-widget-area ul.item-list, #sidebar ul.item-list {
+#sidebar ul.item-list {
 	border-bottom: 1px solid #fff; 
 }
 
-#footer-widget-area ul.item-list li, #sidebar ul.item-list li {
+#footer-widget-area ul.item-list {
+	border-bottom: 1px solid #444; 
+}
+
+#footer span.activity {
+	background: #222; 
+}
+
+#sidebar ul.item-list li {
 	border-bottom: 1px solid #ccc;
 	border-top: 1px solid #fff; 
 }
 
+#footer-widget-area ul.item-list li {
+	border-bottom: 1px solid #000;
+	border-top: 1px solid #444; 
+}
+
 #site-generator { 
 	margin-top: 30px; 
+	text-shadow: none; 
+	color: #777; 
 }
 
 .blog #blog-latest .post {
@@ -851,7 +870,14 @@ body.activity-permalink ul#activity-stream { margin-top: 3em; }
 /* This is a temporary hack to fill in the background on directory pages with color. */
 body.directory.groups div#content .padder, body.directory.members div#content .padder, body.directory.blogs div#content .padder, body.directory.forums div#content .padder, body.directory.activity div#content .padder, .group-create div#content .padder {
     background: url("images/bg-temp-hack.png") repeat-x scroll left top transparent;
+}
 
+#aw-whats-new-submit {
+	display: inline; 
+}
+
+#whats-new-options {
+    overflow: hidden;
 }
 
 /* The media queries below were taken from Less Framework (http://lessframework.com/). I think the strategy here will be to make minor adjustments to make the theme work across all devices. But ideally the CSS above can be improved to make this less important. */
