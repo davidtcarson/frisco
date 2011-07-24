@@ -24,10 +24,6 @@
 	
 			<?php do_action( 'bp_after_sidebar_me' ) ?>
 	
-			<?php if ( bp_is_active( 'messages' ) ) : ?>
-				<?php bp_message_get_notices(); /* Site wide notices to all users */ ?>
-			<?php endif; ?>
-	
 		<?php else : ?>
 	
 			<?php do_action( 'bp_before_sidebar_login_form' ) ?>
