@@ -17,6 +17,10 @@
 
 /* This CSS needs some serious work. It will be cleaned up and optimized in future versions. */
 
+html {
+	background: #3c3c3c; /*temporary */
+}
+
 body {
     font-size: 12px;
     max-width: 10000px;
@@ -163,6 +167,7 @@ body #group-create-tabs ul li span {
 .my-activity div#subnav.item-list-tabs, .group-home div#subnav.item-list-tabs { 
 	margin-bottom: 0;
 	border-bottom: 1px solid #eee; 
+	filter: none; /* IE */
 }
 
 .my-activity #item-body form#whats-new-form, .group-home #whats-new-form { 
@@ -319,6 +324,7 @@ div.item-list-tabs ul li {
 	margin-bottom: 0;
 	padding: 0; 
 	border-bottom: 1px solid #ccc; 
+	filter: none; /* IE */
 }
 
 #header #search-bar {
@@ -441,6 +447,7 @@ div.item-list-tabs {
 	background: -ms-linear-gradient(top, #F5F5F5 0%,#F5F5F5 15%,#ebebeb 100%); /* IE10+ */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#F5F5F5', endColorstr='#ebebeb',GradientType=0 ); /* IE6-9 */
 	background: linear-gradient(top, #F5F5F5 0%,#F5F5F5 15%,#ebebeb  100%); /* W3C */
+	border: 1px solid #bbb;
 	border: 1px solid rgba(0, 0, 0, 0.1);
 	border-left:0; 
 	color: #666666;
@@ -459,6 +466,7 @@ div.item-list-tabs {
     -moz-border-radius:2px 0 0 2px;
 	-webkit-border-radius: 2px 0 0 2px;
 	border-radius:2px 0 0 2px;
+	border-left:1px solid #bbb; 
     border-left:1px solid rgba(0, 0, 0, 0.1);  
 }
     
@@ -469,9 +477,12 @@ div.item-list-tabs {
 }
   	
 #nav li a:hover {
+	box-shadow: 0 1px 1px #aaa;
 	box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+	border: 1px solid #bbb;
 	border: 1px solid rgba(0, 0, 0, 0.4);
 	color: #333; 
+	border-left: 1px solid #bbb;
 	border-left:1px solid rgba(0, 0, 0, 0.4);
 	padding-left: 11px; 
 }
@@ -571,6 +582,7 @@ a.button, button, input[type="submit"], input[type="reset"], input[type="button"
     line-height: 21px;
     padding: 4px 12px;
     text-decoration: none;
+    text-shadow: 0 1px #f7f7f7;
     text-shadow: 0 1px rgba(255, 255, 255, 0.75);
 }
 
@@ -796,6 +808,7 @@ body.activity-permalink ul#activity-stream { margin-top: 3em; }
 
 
 #footer-widget-area h3.widgettitle, #sidebar h3.widgettitle {
+	background: #222;  /* fallback */
 	background: rgba(0,0,0,0.1);  /* 50% transparent */
     font-size: 1.2em; 
     letter-spacing: 0; 
@@ -840,7 +853,7 @@ body.activity-permalink ul#activity-stream { margin-top: 3em; }
 }
 
 #site-generator { 
-	margin-top: 30px; 
+	padding-top: 30px; 
 	text-shadow: none; 
 	color: #777; 
 }
@@ -878,6 +891,10 @@ body.directory.groups div#content .padder, body.directory.members div#content .p
 
 #whats-new-options {
     overflow: hidden;
+}
+
+#sidebar-me {
+	overflow: hidden; 
 }
 
 /* The media queries below were taken from Less Framework (http://lessframework.com/). I think the strategy here will be to make minor adjustments to make the theme work across all devices. But ideally the CSS above can be improved to make this less important. */
