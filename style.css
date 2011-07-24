@@ -934,7 +934,7 @@ px      68    160    252    */
 	body {
 		width: 320px;
 		min-width: 320px;
-		padding: 48px 0 60px;
+		padding: 0;
 	}
 	.fullwidth {
 		width: 320px; 
@@ -959,6 +959,15 @@ px      68    160    252    */
 	body.activity-permalink .activity-list li .activity-content, body.activity-permalink div.activity-comments {margin-left: 90px; }
 	body.activity-permalink .activity-list li .activity-header > p { background: none; }
 	#footer-widget-area div.widget-area > ul {margin-right: 0; width: 100%; }
+	body.page div#container, body.blog div#container, body.single div#container, body.archive div#container { width: 100%; }
+	body.page div#content .padder, body.blog div#content .padder, body.single div#content .padder, body.archive div#content .padder { margin-right: 0; }
+	div#sidebar { clear: both; margin-left: 0; width: 100%; }
+	#footer-widget-area div.widget-area > ul > li { padding: 10px; }
+	div.dir-search { display: none; }
+	.dir-form h3 { font-size: 2em; }
+	a.button, button, input[type="submit"], input[type="reset"], input[type="button"], div.generic-button a { padding: 3px 4px; }
+	th#th-postcount { display: none; }
+	#th-postcount, .td-postcount { display: none; }
 }
 
 /*		Wide Mobile Layout: 480px.
@@ -974,7 +983,7 @@ px      68    160    252    344    436    */
 	body {
 		width: 480px;
 		min-width: 480;
-		padding: 36px 0 48px;
+		padding: 0;
 	}
 	.fullwidth {
 		width: 480px; 
@@ -1000,4 +1009,12 @@ px      68    160    252    344    436    */
 	body.activity-permalink .activity-list li .activity-content, body.activity-permalink div.activity-comments {margin-left: 110px; }	
 	#footer-widget-area div.widget-area > ul {margin-right: 0; width: 50%; }
 	#third.widget-area { clear:left;  }
+	body.page div#container, body.blog div#container, body.single div#container, body.archive div#container { width: 100%; }
+	body.page div#content .padder, body.blog div#content .padder, body.single div#content .padder, body.archive div#content .padder { margin-right: 0; }
+	div#sidebar { clear: both; margin-left: 0; width: 100%;  }
+	#footer-widget-area div.widget-area > ul > li { padding: 10px; }
+	div.dir-search { display: none; }
+	.dir-form h3 { font-size: 2.3em; }
+	a.button, button, input[type="submit"], input[type="reset"], input[type="button"], div.generic-button a { padding: 4px 8px; }
+	#th-postcount, .td-postcount { display: none; }
 }
