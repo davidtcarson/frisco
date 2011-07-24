@@ -24,13 +24,6 @@ function bp_dtheme_enqueue_styles() {
 }
 add_action( 'wp_print_styles', 'bp_dtheme_enqueue_styles' );
 
-function my_deregister_styles() {
-	wp_deregister_style( 'bp-admin-bar' );
-}
-add_action( 'wp_print_styles', 'my_deregister_styles', 100 );
-
-
-
     /*
      * LessCSS for easy color changes.  
      */
@@ -62,7 +55,6 @@ function filter_style_link_tags_for_less_js($tag, $handle)
   	
 	  return $tag;
 	}
-
 
 // Batten down the hatches, we're going full-width... there's got to be a better way to make the theme full-width, but this will work in the meantime. Everything below is just inserting divs to help style a full-width background. 
 function div_bp_before_header() {
