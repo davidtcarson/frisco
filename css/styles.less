@@ -4,7 +4,7 @@
 
 
 // Edit the single line directly below.  
-@color: #098ac6;
+@color: #999;
 // That's it! 
 // Save the file and refresh your browser to see what happened. 
 
@@ -31,7 +31,7 @@ a {
 	background: -webkit-linear-gradient(top, @color 0%,@color 15%,darken(@color, 16%) 100%); /* Chrome10+,Safari5.1+ */
 	background: -o-linear-gradient(top, @color 0%,@color 15%,darken(@color, 16%) 100%); /* Opera11.10+ */
 	background: -ms-linear-gradient(top, @color 0%,@color 15%,darken(@color, 16%) 100%); /* IE10+ */
-	filter: ~"progid:DXImageTransform.Microsoft.gradient( startColorstr='@color', endColorstr='darken(@color, 16%)',GradientType=0 )"; /* IE6-9 */
+	filter: none; /* IE6-9 */
 	background: linear-gradient(top, @color 0%,@color 15%,darken(@color, 16%) 100%); /* W3C */
 }
 
@@ -39,12 +39,13 @@ a {
 div.item-list-tabs ul li {
     background: lighten(@color, 5%);
     border: 1px solid lighten(@color, 5%);
-    
+        
     &:hover { background: @color; border-color: @color; }
 }
     
-div.item-list-tabs ul li {
+div.item-list-tabs ul li, div.item-list-tabs ul li.selected, div.item-list-tabs ul li.current {
 	border-bottom: none; 
+	margin-bottom: -1px; 
 }
 
 // The number/span within each tab indicating the number of elements within 
@@ -64,7 +65,7 @@ div.item-list-tabs ul li a:hover span {
 	background: -webkit-linear-gradient(top, darken(@color, 30%) 0%,darken(@color, 25%) 100%); /* Chrome10+,Safari5.1+ */
 	background: -o-linear-gradient(top, darken(@color, 30%) 0%,darken(@color, 25%) 100%); /* Opera11.10+ */
 	background: -ms-linear-gradient(top, darken(@color, 30%) 0%,darken(@color, 25%) 100%); /* IE10+ */
-	filter: ~"progid:DXImageTransform.Microsoft.gradient( startColorstr='#darken(@color, 30%)', endColorstr='#darken(@color, 25%)',GradientType=0 )"; /* IE6-9 */
+	filter: none; /* IE6-9 */
 	background: linear-gradient(top, darken(@color, 30%) 0%,darken(@color, 25%)  100%); /* W3C */
     border-color: darken(@color, 25%);
     border-right: 1px solid darken(@color, 20%);
@@ -72,4 +73,6 @@ div.item-list-tabs ul li a:hover span {
 	text-shadow: 0 1px 0 #000; 	
 }
 
-
+#header h1 a {
+	text-shadow: 0 -1px 0 darken(@color, 60%);
+}
