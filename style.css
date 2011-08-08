@@ -51,6 +51,14 @@ body {
 	background: #EAEAEA; 
 }
 
+#whats-new-form {
+	padding-bottom: 19px; 
+}
+
+form#whats-new-form #whats-new-submit {
+    margin-top: 5px;
+}
+
 #forums-dir-list, #groups-dir-list, #members-dir-list, #blogs-dir-list { 
 	max-width: 960px; 
     margin: 0 auto 19px;
@@ -172,7 +180,6 @@ body #group-create-tabs ul li span {
 
 .my-activity #item-body form#whats-new-form, .group-home #whats-new-form { 
     border-bottom: 1px solid #FFE475;
-    padding-bottom: 2px; 
 }
 
 .my-activity #whats-new-form, .group-home #whats-new-form { 
@@ -217,6 +224,7 @@ div.item-list-tabs ul li.selected, div.item-list-tabs ul li.current {
 div.item-list-tabs ul li a {
     color: #FFF;
     font-weight: bold; 
+    height: auto; 
 }
 
 div.item-list-tabs ul li.selected a, div.item-list-tabs ul li.current a {
