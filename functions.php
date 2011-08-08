@@ -154,35 +154,6 @@ function div_bp_after_group_header() {
 }
 add_action ( 'bp_after_group_header', 'div_bp_after_group_header' );
 
-
-// Temporary hack. The bp-default directory pages use the form inconsistently. Not a big deal, but Safari is having a bug of a time with the full width layout. 
-function form_template_notices_group_and_member_directory() {
-
- if(bp_is_directory())
-   {
-	?>
-		</form>
-	<?php 
-	}
-}
-add_action ( 'template_notices', 'form_template_notices_group_and_member_directory' );
-
-// see above... same issue. Temporary function. 
-function form_bp_directory_groups_content() {
-	?>
-		<form style="display: none;"> 
-	<?php
-}
-add_action ( 'bp_directory_groups_content', 'form_bp_directory_groups_content' );
-
-// see above... same issue. Temporary function. 
-function form_bp_directory_members_content() {
-	?>
-		<form style="display: none;"> 
-	<?php
-}
-add_action ( 'bp_directory_members_content', 'form_bp_directory_members_content' );
-
 // Adds theme credit in footer.php. Delete it if you'd like.  
 function add_bp_dtheme_credits() {
 	?>
