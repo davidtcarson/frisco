@@ -38,6 +38,9 @@
 
 				</ul>
 			</div><!-- .item-list-tabs -->
+			
+<div id="sidebar-squeeze">			
+	<div id="main-column">
 
 			<div class="item-list-tabs" id="subnav" role="navigation">
 				<ul>
@@ -70,6 +73,10 @@
 
 			</div><!-- #members-dir-list -->
 
+</div><!-- #main-column -->
+	<?php get_sidebar( 'buddypress' ); ?>
+</div><!-- #sidebar-squeeze -->
+
 			<?php do_action( 'bp_directory_members_content' ); ?>
 
 			<?php wp_nonce_field( 'directory_members', '_wpnonce-member-filter' ); ?>
@@ -81,5 +88,5 @@
 
 	<?php do_action( 'bp_after_directory_members_content' ); ?>
 
-<?php get_sidebar( 'buddypress' ); ?>
+
 <?php get_footer( 'buddypress' ); ?>
