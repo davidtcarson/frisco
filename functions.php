@@ -56,6 +56,56 @@ function filter_style_link_tags_for_less_js($tag, $handle)
 	  return $tag;
 	}
 
+// This is taken from bp-default. We don't need custom header image or background style options. 	
+function bp_dtheme_setup() {
+	global $bp;
+
+	// Load the AJAX functions for the theme
+	require( TEMPLATEPATH . '/_inc/ajax.php' );
+
+	// This theme styles the visual editor with editor-style.css to match the theme style.
+	add_editor_style();
+
+	// This theme uses post thumbnails
+	add_theme_support( 'post-thumbnails' );
+
+	// Add default posts and comments RSS feed links to head
+	add_theme_support( 'automatic-feed-links' );
+
+	// This theme uses wp_nav_menu() in one location.
+	register_nav_menus( array(
+		'primary' => __( 'Primary Navigation', 'buddypress' ),
+	) );
+
+
+	if ( !is_admin() ) {
+		// Register buttons for the relevant component templates
+		// Friends button
+		if ( bp_is_active( 'friends' ) )
+			add_action( 'bp_member_header_actions',    'bp_add_friend_button' );
+
+		// Activity button
+		if ( bp_is_active( 'activity' ) )
+			add_action( 'bp_member_header_actions',    'bp_send_public_message_button' );
+
+		// Messages button
+		if ( bp_is_active( 'messages' ) )
+			add_action( 'bp_member_header_actions',    'bp_send_private_message_button' );
+
+		// Group buttons
+		if ( bp_is_active( 'groups' ) ) {
+			add_action( 'bp_group_header_actions',     'bp_group_join_button' );
+			add_action( 'bp_group_header_actions',     'bp_group_new_topic_button' );
+			add_action( 'bp_directory_groups_actions', 'bp_group_join_button' );
+		}
+
+		// Blog button
+		if ( bp_is_active( 'blogs' ) )
+			add_action( 'bp_directory_blogs_actions',  'bp_blogs_visit_blog_button' );
+	}
+}
+add_action( 'after_setup_theme', 'bp_dtheme_setup' );
+
 // Batten down the hatches, we're going full-width... there's got to be a better way to make the theme full-width, but this will work in the meantime. Everything below is just inserting divs to help style a full-width background. 
 function div_bp_before_header() {
 	?>
