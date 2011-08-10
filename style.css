@@ -457,7 +457,7 @@ div#subnav.item-list-tabs {
 	border-left:0; 
 	color: #666666;
 	font: 100% arial,sans-serif;
-	margin: 0 8px 2px 0;
+	margin: 0 8px 0 0;
 	outline: medium none;
 	padding: 7px 12px;
 	text-align: center;
@@ -481,7 +481,7 @@ div#subnav.item-list-tabs {
 	border-radius:0 2px 2px 0;
 }
   	
-#nav li a:hover {
+#nav li a:hover, #nav li.sfhover a {
 	box-shadow: 0 1px 1px #aaa;
 	box-shadow: 0 1px 1px rgba(0,0,0,0.1);
 	border: 1px solid #bbb;
@@ -507,6 +507,71 @@ div#subnav.item-list-tabs {
 	background: linear-gradient(top, #ebebeb 0%,#ebebeb 15%,#dadada  100%); /* W3C */
 }	
 
+#nav li .children {
+	-moz-border-radius:0;
+	-webkit-border-radius: 0;
+	border-radius:0;
+	border: none; 
+	margin-top: -1px; 
+}
+
+#nav li .children li a {
+	background: #797979;
+	float: left;
+    line-height: 30px;
+    margin: 0;
+    width: 100%; 
+    filter: none; 
+   	-moz-border-radius:0;
+	-webkit-border-radius: 0;
+	border-radius:0;
+	text-shadow: 0 -1px 0 #444; 
+	text-align: left; 
+	border: none; 
+}
+
+#nav li .children li:nth-child(odd) a {
+	background: #797979;
+}
+
+#nav li .children li:nth-child(even) a {
+	background: #6a6a6a;
+}
+
+#nav li .children li a:hover {
+	background: #666;
+	color: #EEE;
+   	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+#nav li .children li:nth-child(odd) a:hover {
+	background: #5e5e5e;
+}
+
+#nav li .children li:nth-child(even) a:hover {
+	background: #575756;
+}
+
+#nav li.sfhover:last-child ul.children {
+	right: 0; 
+	left: auto; 
+}
+
+#header #navigation {
+    min-height: 56px;
+    overflow: visible;
+    width: 100%;
+    z-index: 99999;
+}
+
+#nav li.sfhover a {
+   	-moz-border-radius:0;
+	-webkit-border-radius: 0;
+	border-radius:0;
+}
+ 
 div#item-header h2 a {
     font-size: 1.4em;
     letter-spacing: -0.05em;
