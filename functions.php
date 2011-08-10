@@ -166,7 +166,7 @@ function sitecredits( $translated_text, $untranslated_text, $domain ) {
     $custom_field_text = 'Proudly powered by <a href="%1$s">WordPress</a> and <a href="%2$s">BuddyPress</a>.';
 
     if ( $untranslated_text === $custom_field_text ) {
-        return 'Proudly powered by <a href="http://wordpress.org">WordPress</a>, <a href="http://buddypress.or">BuddyPress</a> and the <a href="http://friscotheme.com/">Frisco Theme</a>.';
+        return 'Proudly powered by <a href="http://wordpress.org">WordPress</a>, <a href="http://buddypress.org">BuddyPress</a> and the <a href="http://friscotheme.com/">Frisco Theme</a>.';
     }
 
     return $translated_text;
