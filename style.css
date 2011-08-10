@@ -1005,6 +1005,15 @@ body.register #sidebar {
 	display: none; 
 }
 
+body.page-template-onecolumn-page-php #container div#content .padder {
+	margin-right: 0; 
+}
+
+body.page-template-onecolumn-page-php #blog-page {
+	width: 75%; 
+	margin: 0 auto; 
+}
+
 /* The media queries below were taken from Less Framework (http://lessframework.com/). I think the strategy here will be to make minor adjustments to make the theme work across all devices. But ideally the CSS above can be improved to make this less important. */
 
 
