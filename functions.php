@@ -154,13 +154,22 @@ function div_bp_after_group_header() {
 }
 add_action ( 'bp_after_group_header', 'div_bp_after_group_header' );
 
-// Adds theme credit in footer.php. Delete it if you'd like.  
-function add_bp_dtheme_credits() {
-	?>
-		<p><?php printf( __( 'Made with a little help from the <a href="%1$s">Frisco Theme</a>.', 'buddypress' ), 'http://friscotheme.com' ) ?></p>
-	<?php
-}
-add_action ( 'bp_dtheme_credits', 'add_bp_dtheme_credits' );
+//site credits
+add_filter('gettext', 'sitecredits', 20, 3);
+/**
+ * Edit the default credits to add Frisco link. Remove if you'd like. 
+ *
+ * @link http://codex.wordpress.org/Plugin_API/Filter_Reference/gettext
+ */
+function sitecredits( $translated_text, $untranslated_text, $domain ) {
 
+    $custom_field_text = 'Proudly powered by <a href="%1$s">WordPress</a> and <a href="%2$s">BuddyPress</a>.';
+
+    if ( $untranslated_text === $custom_field_text ) {
+        return 'Proudly powered by <a href="http://wordpress.org">WordPress</a>, <a href="http://buddypress.or">BuddyPress</a> and the <a href="http://friscotheme.com/">Frisco Theme</a>.';
+    }
+
+    return $translated_text;
+}
 
 ?>
