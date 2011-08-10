@@ -1,0 +1,89 @@
+// This is a stylesheet that controls the main theme colors. 
+// Change the entire color scheme of the theme just by changing a single line of CSS. 
+// Made possible by the LESS CSS Framework. See http://lesscss.org/
+
+
+// Edit the single line directly below.  
+@color: #098ac6;
+// That's it! 
+// Save the file and refresh your browser to see what happened. 
+
+
+// The CSS below is dependent on the @color you define above. See http://lesscss.org/#docs
+// It is not recommended that you edit the CSS below. Of course, there is nothing stopping you! 
+// Don't want to use this file? No problem. Go to functions.php and delete the "add_lesscss" and "add_lesscssjs" functions. 
+
+
+// Link color
+a {
+    color: @color;
+    font-weight: bold;
+    text-decoration: none;
+    
+  &:hover { color:  darken(@color, 15%); }
+}
+
+// Header gradient
+#header #search-bar {
+	background: @color; 
+	background: -moz-linear-gradient(top, @color 0%, @color 15%, darken(@color, 16%) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@color), color-stop(15%,@color), color-stop(100%,darken(@color, 16%))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, @color 0%,@color 15%,darken(@color, 16%) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, @color 0%,@color 15%,darken(@color, 16%) 100%); /* Opera11.10+ */
+	background: -ms-linear-gradient(top, @color 0%,@color 15%,darken(@color, 16%) 100%); /* IE10+ */
+	filter: none; /* IE6-9 */
+	background: linear-gradient(top, @color 0%,@color 15%,darken(@color, 16%) 100%); /* W3C */
+}
+
+// Tabs towards the top of most pages. 
+div.item-list-tabs ul li {
+    background: lighten(@color, 5%);
+    border: 1px solid lighten(@color, 5%);
+        
+    &:hover { background: @color; border-color: @color; }
+}
+    
+div.item-list-tabs ul li, div.item-list-tabs ul li.selected, div.item-list-tabs ul li.current {
+	border-bottom: none; 
+	margin-bottom: -1px; 
+}
+
+// The number/span within each tab indicating the number of elements within 
+div.item-list-tabs ul li a span {
+  	background: darken(@color, 15%);
+}
+
+div.item-list-tabs ul li a:hover span {
+  	background: darken(@color, 20%);
+}
+
+// Search button[submit] in header
+#header #search-bar input[type=submit] {
+	background: darken(@color, 30%); 
+	background: -moz-linear-gradient(top, darken(@color, 30%) 0%, darken(@color, 25%) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,darken(@color, 30%)), color-stop(100%,darken(@color, 25%))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, darken(@color, 30%) 0%,darken(@color, 25%) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, darken(@color, 30%) 0%,darken(@color, 25%) 100%); /* Opera11.10+ */
+	background: -ms-linear-gradient(top, darken(@color, 30%) 0%,darken(@color, 25%) 100%); /* IE10+ */
+	filter: none; /* IE6-9 */
+	background: linear-gradient(top, darken(@color, 30%) 0%,darken(@color, 25%)  100%); /* W3C */
+    border-color: darken(@color, 25%);
+    border-right: 1px solid darken(@color, 20%);
+    color: #FFF;
+	text-shadow: 0 1px 0 #000; 	
+}
+
+#header h1 a {
+	text-shadow: 0 -1px 0 darken(@color, 60%);
+}
+
+form#whats-new-form textarea:focus {
+	-moz-box-shadow:0 0 7px lighten(@color, 40%) inset, 0 0 7px lighten(@color, 40%) inset;
+   	-webkit-box-shadow:0 0 7px lighten(@color, 40%) inset, 0 0 7px lighten(@color, 40%) inset;
+    box-shadow: 0 0 7px lighten(@color, 40%) inset, 0 0 7px lighten(@color, 40%) inset;
+}
+
+#whats-new:focus {
+    border-color: lighten(@color, 20%) !important;
+    outline-color: lighten(@color, 20%);
+}

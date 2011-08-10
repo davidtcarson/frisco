@@ -528,15 +528,6 @@ div#subnav.item-list-tabs {
 	text-shadow: 0 -1px 0 #444; 
 	text-align: left; 
 	border: none; 
-   	-moz-box-shadow: none;
-	-webkit-box-shadow: none;
-	box-shadow: none;
-}
-
-#nav > li.current-menu-item a li a {
-	-moz-box-shadow: none;
-	-webkit-box-shadow: none;
-	box-shadow: none;
 }
 
 #nav li .children li:nth-child(odd) a {
