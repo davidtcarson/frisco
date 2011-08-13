@@ -660,6 +660,7 @@ form#whats-new-form textarea {
 	font-size: 14px;
 	width: 94%;
 	padding: 8px 10px; 
+	max-width: 94%; 
 }
 
 #whats-new-avatar {
