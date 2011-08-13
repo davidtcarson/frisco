@@ -563,14 +563,12 @@ div#subnav.item-list-tabs {
 	background: #575756;
 }
 
-/* #nav li.sfhover:last-child ul.children, #nav li.sfhover:last-child ul.sub-menu {
+#nav li.sfhover:last-child > ul.children, #nav li.sfhover:last-child > ul.sub-menu {
 	right: 0; 
 	left: auto; 
 }
 
-*/
-
- #nav .sfhover ul.children .sfhover ul.children, #nav *:hover ul.sub-menu *:hover ul.sub-menu {
+#nav .sfhover ul.children .sfhover ul.children, #nav *:hover ul.sub-menu *:hover ul.sub-menu {
 	left: 128px; 
     opacity: .9; 
     margin: 0; 
