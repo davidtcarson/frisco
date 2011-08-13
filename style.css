@@ -619,7 +619,7 @@ body.profile div#message.updated {
 	margin: 10px auto; 
 }
 
-div#message.updated p {
+div#message.updated p, #item-header div#message p {
     background: #DFFCD9;
     border: none;
     color: #7b6b01;
@@ -627,6 +627,22 @@ div#message.updated p {
     line-height: 30px; 
     border: 1px solid #ffde00; 
     padding: 4px 10px; 
+}
+
+div#message.error {
+	margin: 0 -19px;
+	background: #EAEAEA;  
+}
+
+div#message.error p {
+	padding-bottom: 10px; 
+	border: 1px solid #db2e2e; 
+}
+
+#whats-new-form div#message.error {
+	margin: 0;
+	margin-bottom: 10px; 
+	padding-bottom: 0; 
 }
 
 form#whats-new-form textarea {
@@ -1043,6 +1059,15 @@ body.page-template-onecolumn-page-php #blog-page {
 
 #activity-stream {
 	margin-top: 0; 
+}
+
+.messages-notices a.button { 
+	font-size: 85%; 
+	padding: 3px 4px; 
+}
+
+.standard-form div.submit input#send {
+	margin-bottom: 1em; 
 }
 
 /* The media queries below were taken from Less Framework (http://lessframework.com/). I think the strategy here will be to make minor adjustments to make the theme work across all devices. But ideally the CSS above can be improved to make this less important. */
