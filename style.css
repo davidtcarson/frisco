@@ -7,8 +7,8 @@
  * Author URI: http://davidtcarson.com
  * License: GNU General Public License
  * License URI: license.txt
- *Template: bp-default
- *Tags: buddypress
+ * Template: bp-default
+ * Tags: buddypress
 */
 
 
@@ -67,7 +67,7 @@ form#whats-new-form #whats-new-submit {
     overflow-x:visible; /* safari bug? */ 
 }
 
-body.page div#container, body.blog div#container, body.single div#container, body.archive div#container, body.error404 div#container {
+body.page div#container, body.blog div#container, body.single div#container, body.archive div#container, body.error404 div#container, body.activation div#container {
 	width: 960px; 
 	margin: 20px auto; 
 	-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
@@ -75,7 +75,7 @@ body.page div#container, body.blog div#container, body.single div#container, bod
 	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
 }
 
-body.page div#content .padder, body.blog div#content .padder, body.single div#content .padder, body.archive div#content .padder {
+body.page div#content .padder, body.blog div#content .padder, body.single div#content .padder, body.archive div#content .padder, body.activation div#content .padder {
 	margin-right: 226px; 
 	background: #fff; 
 }
@@ -507,7 +507,7 @@ div#subnav.item-list-tabs {
 	background: linear-gradient(top, #ebebeb 0%,#ebebeb 15%,#dadada  100%); /* W3C */
 }	
 
-#nav li .children {
+#nav li .children, #nav li .sub-menu {
 	-moz-border-radius:0;
 	-webkit-border-radius: 0;
 	border-radius:0;
@@ -515,7 +515,7 @@ div#subnav.item-list-tabs {
 	margin-top: -1px; 
 }
 
-#nav li .children li a {
+#nav li .children li a, #nav li .sub-menu li a {
 	background: #797979;
 	float: left;
     line-height: 30px;
@@ -528,26 +528,26 @@ div#subnav.item-list-tabs {
 	text-shadow: 0 -1px 0 #444; 
 	text-align: left; 
 	border: none; 
-	-moz-box-shadow: none;
+   	-moz-box-shadow: none;
 	-webkit-box-shadow: none;
 	box-shadow: none;
 }
 
 #nav > li.current-menu-item a li a {
-    -moz-box-shadow: none;
+	-moz-box-shadow: none;
 	-webkit-box-shadow: none;
 	box-shadow: none;
 }
 
-#nav li .children li:nth-child(odd) a {
+#nav li .children li:nth-child(odd) a, #nav li .sub-menu li:nth-child(odd) a {
 	background: #797979;
 }
 
-#nav li .children li:nth-child(even) a {
+#nav li .children li:nth-child(even) a, #nav li .sub-menu li:nth-child(even) a {
 	background: #6a6a6a;
 }
 
-#nav li .children li a:hover {
+#nav li .children li a:hover, #nav li .sub-menu li a:hover {
 	background: #666;
 	color: #EEE;
    	-moz-box-shadow: none;
@@ -555,17 +555,34 @@ div#subnav.item-list-tabs {
 	box-shadow: none;
 }
 
-#nav li .children li:nth-child(odd) a:hover {
+#nav li .children li:nth-child(odd) a:hover, #nav li .sub-menu li:nth-child(odd) a:hover {
 	background: #5e5e5e;
 }
 
-#nav li .children li:nth-child(even) a:hover {
+#nav li .children li:nth-child(even) a:hover, #nav li .sub-menu li:nth-child(even) a:hover {
 	background: #575756;
 }
 
-#nav li.sfhover:last-child ul.children {
+/* #nav li.sfhover:last-child ul.children, #nav li.sfhover:last-child ul.sub-menu {
 	right: 0; 
 	left: auto; 
+}
+
+*/
+
+ #nav .sfhover ul.children .sfhover ul.children, #nav *:hover ul.sub-menu *:hover ul.sub-menu {
+	left: 128px; 
+    opacity: .9; 
+    margin: 0; 
+    top: 0; 
+}
+
+#nav .sfhover:last-child ul.children .sfhover ul.children, #nav *:hover:last-child ul.sub-menu *:hover ul.sub-menu {
+    right: 128px;
+    top: 0%;
+    width: 128px;
+    left: auto; 
+    margin: 0; 
 }
 
 #header #navigation {
@@ -1021,6 +1038,10 @@ body.page-template-onecolumn-page-php #container div#content .padder {
 body.page-template-onecolumn-page-php #blog-page {
 	width: 75%; 
 	margin: 0 auto; 
+}
+
+#activity-stream {
+	margin-top: 0; 
 }
 
 /* The media queries below were taken from Less Framework (http://lessframework.com/). I think the strategy here will be to make minor adjustments to make the theme work across all devices. But ideally the CSS above can be improved to make this less important. */
