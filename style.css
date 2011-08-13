@@ -645,6 +645,11 @@ div#message.error p {
 	padding-bottom: 0; 
 }
 
+.group-create div#message.error {
+	margin: 0 auto;
+	background: transparent;
+} 
+
 form#whats-new-form textarea {
 	background: #fff;
 	border: 1px solid #ccc;
