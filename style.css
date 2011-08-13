@@ -610,10 +610,13 @@ div#item-header h2 a {
 	max-width: 960px; 
 }
 
-
 div#message.updated {
 	margin: -10px auto 0;  
-	max-width: 960px; 
+	max-width: 958px; 
+}
+
+body.profile div#message.updated {
+	margin: 10px auto; 
 }
 
 div#message.updated p {
@@ -623,7 +626,8 @@ div#message.updated p {
     margin-top: 0; 
     padding: 0 1em; 
     line-height: 30px; 
-    border-left: 10px solid #ffde00; 
+    border: 1px solid #ffde00; 
+    padding: 4px 10px; 
 }
 
 form#whats-new-form textarea {
