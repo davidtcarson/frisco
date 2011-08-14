@@ -4,7 +4,7 @@
 
 
 // Edit the single line directly below.  
-@color: #098ac6;
+@color: #098AC6;
 // That's it! 
 // Save the file and refresh your browser to see what happened. 
 
@@ -19,10 +19,8 @@ a {
     color: @color;
     font-weight: bold;
     text-decoration: none;
-    
   &:hover { color:  darken(@color, 15%); }
 }
-
 // Header gradient
 #header #search-bar {
 	background: @color; 
@@ -34,7 +32,6 @@ a {
 	filter: none; /* IE6-9 */
 	background: linear-gradient(top, @color 0%,@color 15%,darken(@color, 16%) 100%); /* W3C */
 }
-
 // Tabs towards the top of most pages. 
 div.item-list-tabs ul li {
     background: lighten(@color, 5%);
@@ -42,21 +39,19 @@ div.item-list-tabs ul li {
         
     &:hover { background: @color; border-color: @color; }
 }
-    
-div.item-list-tabs ul li, div.item-list-tabs ul li.selected, div.item-list-tabs ul li.current {
+div.item-list-tabs ul li, 
+div.item-list-tabs ul li.selected, 
+div.item-list-tabs ul li.current {
 	border-bottom: none; 
 	margin-bottom: -1px; 
 }
-
 // The number/span within each tab indicating the number of elements within 
 div.item-list-tabs ul li a span {
   	background: darken(@color, 15%);
 }
-
 div.item-list-tabs ul li a:hover span {
   	background: darken(@color, 20%);
 }
-
 // Search button[submit] in header
 #header #search-bar input[type=submit] {
 	background: darken(@color, 30%); 
@@ -72,17 +67,14 @@ div.item-list-tabs ul li a:hover span {
     color: #FFF;
 	text-shadow: 0 1px 0 #000; 	
 }
-
 #header h1 a {
 	text-shadow: 0 -1px 0 darken(@color, 60%);
 }
-
 form#whats-new-form textarea:focus {
 	-moz-box-shadow:0 0 7px lighten(@color, 40%) inset, 0 0 7px lighten(@color, 40%) inset;
    	-webkit-box-shadow:0 0 7px lighten(@color, 40%) inset, 0 0 7px lighten(@color, 40%) inset;
     box-shadow: 0 0 7px lighten(@color, 40%) inset, 0 0 7px lighten(@color, 40%) inset;
 }
-
 #whats-new:focus {
     border-color: lighten(@color, 20%) !important;
     outline-color: lighten(@color, 20%);
