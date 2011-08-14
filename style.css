@@ -526,7 +526,7 @@ nav li.selected a {
 	-webkit-border-radius: 0;
 	border-radius:0;
 	border: none; 
-	margin-top: -1px; 
+	margin-top: -1px;
 }
 #nav li .children li a, 
 #nav li .sub-menu li a {
@@ -575,6 +575,10 @@ nav li.selected a {
 #nav li .sub-menu li:nth-child(even) a:hover {
 	background: #575756;
 }
+#nav .sfhover ul, #nav *:hover ul {
+	min-width: 180px; 
+	width: auto; 
+}
 #nav li.sfhover:last-child > ul.children, 
 #nav li.sfhover:last-child > ul.sub-menu {
 	right: 0; 
@@ -582,18 +586,24 @@ nav li.selected a {
 }
 #nav .sfhover ul.children .sfhover ul.children, 
 #nav *:hover ul.sub-menu *:hover ul.sub-menu {
-	left: 128px; 
+	left: 100%; 
     opacity: .9; 
     margin: 0; 
     top: 0; 
 }
 #nav .sfhover:last-child ul.children .sfhover ul.children, 
 #nav *:hover:last-child ul.sub-menu *:hover ul.sub-menu {
-    right: 128px;
+    right: 100%;
     top: 0%;
-    width: 128px;
+    width: 100%;
     left: auto; 
     margin: 0; 
+}
+#nav .sfhover ul li, #nav *:hover ul li {
+    width: 100%;
+}
+#nav .sfhover ul .sfhover > ul, #nav *:hover ul *:hover > ul {
+    width: 100%;
 }
 #header #navigation {
     min-height: 56px;
