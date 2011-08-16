@@ -12,12 +12,11 @@
 */
 
 
-/* Inherit the default theme styles... bp-default now loads stylesheets via functions.php in bp_dtheme_enqueue_styles... but that messes with the order of things so I've temporarily added a silent bp_dtheme_enqueue_styles to the functions.php here in the child theme. This will change I'm sure.  */
+/* Inherit the default theme styles... bp-default now loads stylesheets via functions.php in bp_dtheme_enqueue_styles... but that messes with the order of things so I've temporarily added a silent bp_dtheme_enqueue_styles to the functions.php here in the child theme. This will change I'm sure. */ 
 @import url( ../../plugins/buddypress/bp-themes/bp-default/_inc/css/default.css );
 
 /*----------------------------------------------------------------------------------------------------------------------------
-Frisco Custom Styles Below. 
-See also /themes/frisco/css/styles.less for dynamic color changing customization. 
+Frisco Styles - Overriding bp-default css. 
 ----------------------------------------------------------------------------------------------------------------------------*/
 html {
 	background: #3c3c3c;

@@ -6,29 +6,14 @@ For help with Frisco, or for more information, please visit the BuddyPress forum
 There is no demo site yet, but I have made some screenshots. See https://s3.amazonaws.com/frisco/screenshot-1.png, https://s3.amazonaws.com/frisco/screenshot-2.png, https://s3.amazonaws.com/frisco/screenshot-3.png, and https://s3.amazonaws.com/frisco/screenshot-4.png
 
 --- Installation ---
-Upload /frisco/ to your themes directory in wp-content/themes/ and activate the theme under "Appearance > Themes" menu in your WordPress admin area.
+Upload and activate the Frisco theme under "Appearance > Themes" menu in your WordPress admin area.
 
 
 --- Getting Started with Frisco ---
+Go to "Appearance > Theme Options" to configure basic options. 
 
-
-*CUSTOMIZING THE STYLE*
-The main stylesheet is located in the root directory at style.css. But there is a secondary stylesheet located in /css/styles.less. 
-
-Why the secondary stylesheet? The LESS CSS framework has been integrated into the theme to make it very easy to customize the color scheme of Frisco by chaninging a single line of CSS. For more info about the LESS CSS framework, go to http://lesscss.org/. 
-
-Ready to see it in action? After you've activated the theme, go to line 7 of /css/styles.less. 
-
-You should see something like the following: 
-
-@color: #098ac6;
-
-Edit the "098ac6" to any color you'd like. For example, change it to "00b2d9" or "333". Don't forget to leave the pound sign in there.
-
-Save /css/styles.less after you changed the @color value. And then refresh your BuddyPress website. You should now see the theme with a color scheme derived from the value you assigned to @color. 
-
-For more about how LESS CSS works, go to http://lesscss.org/#docs. 
-
+*CHANGING COLORS*
+In Theme Options, there are a few basic color choices. If that's not enough, check the Custom Stylesheet box in Theme Options and create a filed called custom.css in the main theme directory to override any theme styles. 
 
 *CHANGING THE TITLE FONT*
 Frisco also has Google Web fonts enabled by default. See http://www.google.com/webfonts. 
@@ -49,7 +34,6 @@ define('BP_USE_WP_ADMIN_BAR', true);
 Frisco is in its infancy. And it should be improving drastically in the coming days and weeks before it makes it into the WordPress theme repository. Help me test it by following its development at https://github.com/davidtcarson/frisco
 
 --- Credits ---
-LESS CSS - The dynamic stylesheet language. http://lesscss.org/
 Google Web Fonts - http://www.google.com/webfonts
 Lobster 2 Font by Pablo Impallari - https://plus.google.com/114391601624281927771/about
 

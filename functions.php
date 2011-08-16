@@ -1,5 +1,8 @@
 <?php
 
+// Load up our awesome theme options
+require_once ( get_stylesheet_directory() . '/theme-options.php' );
+
 	 /*
      * Google Font for cursive header title. This will change for sure to make it easier for users to change. 
      */
@@ -25,36 +28,29 @@ function bp_dtheme_enqueue_styles() {
 add_action( 'wp_print_styles', 'bp_dtheme_enqueue_styles' );
 
     /*
-     * LessCSS for easy color changes.  
+     * New theme option.  
      */
-add_action('wp_print_styles', 'add_lesscss');
-function add_lesscss() {
-
-	wp_register_style('lesscss', get_bloginfo('stylesheet_directory') . '/css/styles.less');
-	wp_enqueue_style( 'lesscss');
+add_action('wp_print_styles', 'add_colorcss');
+function add_colorcss() {
+	$options = get_option('frisco_theme_options');
+    wp_register_style('colorcss', get_bloginfo('stylesheet_directory') . '/css/' . $options['selectinput'] . '.css');
+	wp_enqueue_style( 'colorcss');
 }
 
-add_action('init', 'add_lesscssjs');
-function add_lesscssjs() {
-    wp_register_script( 'lesscssjs', get_bloginfo('stylesheet_directory') . '/js/less-1.1.3.min.js');
-    wp_enqueue_script( 'lesscssjs' );
 
-}    
-
-// add rel="stylesheet/less" to any less stylesheet url
-// from http://plugins.svn.wordpress.org/template-provisioning/tags/0.2.5/template-provisioning.php
-add_filter('style_loader_tag', 'filter_style_link_tags_for_less_js', 10, 2);
-function filter_style_link_tags_for_less_js($tag, $handle)
-	{
-  	global $wp_styles;
-  	
-  	// if the src ends in ".less", the rel attribute should be "stylesheet/less"
-  	if (preg_match("/\.less$/", $wp_styles->registered[$handle]->src)) {
-  	  $tag = preg_replace("/rel=(['\"])[^'\"]*(['\"])/", "rel=$1stylesheet/less$2", $tag);
-  	}
-  	
-	  return $tag;
+add_action('wp_print_styles', 'add_customcss');
+function add_customcss() {
+	$options = get_option('frisco_theme_options');
+	
+	if ( $options['customcss'] == 1 ) {
+    // Load custom.css
+	    wp_register_style('customcss', get_bloginfo('stylesheet_directory') . '/custom.css');
+		wp_enqueue_style( 'customcss');
+	} else {
+    // Do nothing
 	}
+
+}
 	
 function bp_dtheme_setup() {
 	global $bp;
@@ -104,6 +100,7 @@ function bp_dtheme_setup() {
 	}
 }
 add_action( 'after_setup_theme', 'bp_dtheme_setup' );
+
 
 // Batten down the hatches, we're going full-width... there's got to be a better way to make the theme full-width, but this will work in the meantime. Everything below is just inserting divs to help style a full-width background. 
 function div_bp_before_header() {
