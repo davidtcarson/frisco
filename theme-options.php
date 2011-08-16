@@ -123,7 +123,7 @@ function theme_options_do_page() {
 								echo $p . $r;
 							?>
 						</select>
-						<label class="description" for="frisco_theme_options[selectinput]"><?php _e( 'Only a few color choices at the moment. Create custom.css in the /css/ directory to override anything.', 'friscotheme' ); ?></label>
+						<label class="description" for="frisco_theme_options[selectinput]"><?php _e( 'Only a few color choices at the moment.', 'friscotheme' ); ?></label>
 					</td>
 				</tr>
 
