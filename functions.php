@@ -108,6 +108,25 @@ function add_customcss() {
 
 }
 
+function bp_dtheme_show_notice() {
+	global $pagenow;
+
+	// Bail if bp-default theme was not just activated
+	if ( empty( $_GET['activated'] ) || ( 'themes.php' != $pagenow ) || !is_admin() )
+		return;
+
+	?>
+
+	<div id="message" class="updated fade">
+		<p><?php printf( __( 'Theme activated! This theme contains <a href="%s">a few options</a> and <a href="%s">sidebar widgets</a>.', 'buddypress' ), admin_url( 'themes.php?page=theme_options' ), admin_url( 'widgets.php' ) ) ?></p>
+	</div>
+
+	<style type="text/css">#message2, #message0 { display: none; }</style>
+
+	<?php
+}
+add_action( 'admin_notices', 'bp_dtheme_show_notice' );
+
 // Batten down the hatches, we're going full-width... there's got to be a better way to make the theme full-width, but this will work in the meantime. Everything below is just inserting divs to help style a full-width background. 
 function div_bp_before_header() {
 	?>
