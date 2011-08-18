@@ -1242,6 +1242,10 @@ px      68    160    252    */
 	}
 }
 
+#previous-next.submit {
+	margin-bottom: 20px; 
+}
+
 /*		Wide Mobile Layout: 480px.
 		Gutters: 24px.
 		Outer margins: 22px.
