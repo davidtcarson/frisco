@@ -107,9 +107,9 @@ function theme_options_do_page() {
 				?>
 				<tr valign="top"><th scope="row"><?php _e( 'Select Theme Color', 'friscotheme' ); ?></th>
 					<td>
-						<select name="frisco_theme_options[selectinput]">
+						<select name="frisco_theme_options[themecolor]">
 							<?php
-								$selected = $options['selectinput'];
+								$selected = $options['themecolor'];
 								$p = '';
 								$r = '';
 
@@ -123,7 +123,7 @@ function theme_options_do_page() {
 								echo $p . $r;
 							?>
 						</select>
-						<label class="description" for="frisco_theme_options[selectinput]"><?php _e( 'Only a few color choices at the moment.', 'friscotheme' ); ?></label>
+						<label class="description" for="frisco_theme_options[themecolor]"><?php _e( 'Only a few color choices at the moment.', 'friscotheme' ); ?></label>
 					</td>
 				</tr>
 

@@ -27,31 +27,6 @@ function bp_dtheme_enqueue_styles() {
 }
 add_action( 'wp_print_styles', 'bp_dtheme_enqueue_styles' );
 
-    /*
-     * New theme option.  
-     */
-add_action('wp_print_styles', 'add_colorcss');
-function add_colorcss() {
-	$options = get_option('frisco_theme_options');
-    wp_register_style('colorcss', get_bloginfo('stylesheet_directory') . '/css/' . $options['selectinput'] . '.css');
-	wp_enqueue_style( 'colorcss');
-}
-
-
-add_action('wp_print_styles', 'add_customcss');
-function add_customcss() {
-	$options = get_option('frisco_theme_options');
-	
-	if ( $options['customcss'] == 1 ) {
-    // Load custom.css
-	    wp_register_style('customcss', get_bloginfo('stylesheet_directory') . '/custom.css');
-		wp_enqueue_style( 'customcss');
-	} else {
-    // Do nothing
-	}
-
-}
-	
 function bp_dtheme_setup() {
 	global $bp;
 
@@ -101,6 +76,37 @@ function bp_dtheme_setup() {
 }
 add_action( 'after_setup_theme', 'bp_dtheme_setup' );
 
+    /*
+     * New theme option.  
+     */
+add_action('wp_print_styles', 'add_colorcss');
+function add_colorcss() {
+	// If theme options are saved in the database
+	if( !get_option( 'frisco_theme_options' ) ) { 
+		// Load stylesheet for color choice
+		wp_register_style('colorcss', get_bloginfo('stylesheet_directory') . '/css/default.css');
+	} else {
+		// If not, load default color stylesheet
+		$options = get_option('frisco_theme_options');
+		wp_register_style('colorcss', get_bloginfo('stylesheet_directory') . '/css/' . $options['themecolor'] . '.css');
+	}
+		wp_enqueue_style( 'colorcss');
+}
+
+add_action('wp_print_styles', 'add_customcss');
+function add_customcss() {
+
+	$options = get_option('frisco_theme_options');
+	
+	if ( $options['customcss'] == 1 ) {
+    // Load custom.css
+	    wp_register_style('customcss', get_bloginfo('stylesheet_directory') . '/custom.css');
+		wp_enqueue_style( 'customcss');
+	} else {
+    // Do nothing
+	}
+
+}
 
 // Batten down the hatches, we're going full-width... there's got to be a better way to make the theme full-width, but this will work in the meantime. Everything below is just inserting divs to help style a full-width background. 
 function div_bp_before_header() {
