@@ -23,7 +23,17 @@ function go_responsive() {
 add_action ( 'bp_head', 'go_responsive' );
 		
 function bp_dtheme_enqueue_styles() {
-       //nothing to see here
+	// Bump this when changes are made to bust cache
+	$version = '20110818';
+
+	// MAIN CSS
+	wp_enqueue_style( 'frisco-main', get_bloginfo('stylesheet_directory') . '/style.css', array(), $version );
+
+	// Responsive Layout
+	if ( current_theme_supports( 'bp-default-responsive' ) ) {
+		wp_enqueue_style( 'bp-default-responsive', get_template_directory_uri() . '/_inc/css/responsive.css', array( 'bp-default-main' ), $version );
+	}
+
 }
 add_action( 'wp_print_styles', 'bp_dtheme_enqueue_styles' );
 
