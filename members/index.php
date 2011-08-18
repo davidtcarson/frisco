@@ -8,7 +8,7 @@
 
 <?php get_header( 'buddypress' ); ?>
 
-	<?php do_action( 'bp_before_directory_members_content' ); ?>
+	<?php do_action( 'bp_before_directory_members_page' ); ?>
 
 	<div id="content">
 		<div class="padder">
@@ -86,7 +86,7 @@
 		</div><!-- .padder -->
 	</div><!-- #content -->
 
-	<?php do_action( 'bp_after_directory_members_content' ); ?>
+	<?php do_action( 'bp_after_directory_members_page' ); ?>
 
 
 <?php get_footer( 'buddypress' ); ?>

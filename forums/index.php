@@ -11,7 +11,7 @@
 
 <?php get_header( 'buddypress' ); ?>
 
-	<?php do_action( 'bp_before_directory_forums_content' ); ?>
+	<?php do_action( 'bp_before_directory_forums_page' ); ?>
 
 	<div id="content">
 		<div class="padder">
@@ -21,6 +21,8 @@
 			<form action="" method="post" id="forums-search-form" class="dir-form">
 
 				<h3><?php _e( 'Forums Directory', 'buddypress' ); ?><?php if ( is_user_logged_in() ) : ?> &nbsp;<a class="button show-hide-new" href="#new-topic" id="new-topic-button"><?php _e( 'New Topic', 'buddypress' ); ?></a><?php endif; ?></h3>
+
+				<?php do_action( 'bp_before_directory_forums_content' ); ?>
 
 				<div id="forums-dir-search" class="dir-search" role="search">
 
@@ -50,7 +52,7 @@
 
 <div id="sidebar-squeeze">			
 	<div id="main-column">
-	
+
 				<div class="item-list-tabs" id="subnav" role="navigation">
 					<ul>
 
@@ -152,6 +154,11 @@
 				<?php endif; ?>
 			</div><!-- #new-topic-post -->
 			
+			<?php do_action( 'bp_after_new_topic_form' ); ?>
+			
+			<?php do_action( 'bp_after_directory_forums_content' ); ?>
+
+			
 	</div><!-- #main-column -->
 		<?php get_sidebar( 'buddypress' ); ?>
 </div><!-- #sidebar-squeeze -->
@@ -159,6 +166,6 @@
 		</div><!-- .padder -->
 	</div><!-- #content -->
 
-	<?php do_action( 'bp_after_directory_forums_content' ); ?>
+	<?php do_action( 'bp_after_directory_forums_page' ); ?>
 
 <?php get_footer( 'buddypress' ); ?>
