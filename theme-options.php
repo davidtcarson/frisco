@@ -75,11 +75,54 @@ $radio_options = array(
 	)
 );
 
+$select_font_options = array(
+	'Lobster Two' => array(
+		'value' =>	'Lobster Two',
+		'label' => __( 'Lobster Two', 'friscotheme' )
+	),
+	'Quattrocento' => array(
+		'value' =>	'Quattrocento',
+		'label' => __( 'Quattrocento', 'friscotheme' )
+	),
+	'Droid Sans' => array(
+		'value' => 'Droid Sans',
+		'label' => __( 'Droid Sans', 'friscotheme' )
+	),
+	'PT Sans' => array(
+		'value' => 'PT Sans',
+		'label' => __( 'PT Sans', 'friscotheme' )
+	),
+	'Yanone Kaffeesatz' => array(
+		'value' => 'Yanone Kaffeesatz',
+		'label' => __( 'Yanone Kaffeesatz', 'friscotheme' )
+	),
+	'Cabin' => array(
+		'value' => 'Cabin',
+		'label' => __( 'Cabin', 'friscotheme' )
+	),
+	'Black Ops One' => array(
+		'value' => 'Black Ops One',
+		'label' => __( 'Black Ops One', 'friscotheme' )
+	),
+	'Nixie One' => array(
+		'value' => 'Nixie One',
+		'label' => __( 'Nixie One', 'friscotheme' )
+	),
+	'Bangers' => array(
+		'value' => 'Bangers',
+		'label' => __( 'Bangers', 'friscotheme' )
+	),
+	'Monofett' => array(
+		'value' => 'Monofett',
+		'label' => __( 'Monofett', 'friscotheme' )
+	)
+);
+
 /**
  * Create the options page
  */
 function theme_options_do_page() {
-	global $select_options, $radio_options;
+	global $select_options, $radio_options, $select_font_options;
 
 	if ( ! isset( $_REQUEST['settings-updated'] ) )
 		$_REQUEST['settings-updated'] = false;
@@ -140,6 +183,33 @@ function theme_options_do_page() {
 				</tr>
 
 
+				<?php
+				/**
+				 * Font Choices
+				 */
+				?>
+				<tr valign="top"><th scope="row"><?php _e( 'Select Google Font', 'friscotheme' ); ?></th>
+					<td>
+						<select name="frisco_theme_options[googlefont]">
+							<?php
+								$selected = $options['googlefont'];
+								$p = '';
+								$r = '';
+
+								foreach ( $select_font_options as $option ) {
+									$label = $option['label'];
+									if ( $selected == $option['value'] ) // Make default first in list
+										$p = "\n\t<option style=\"padding-right: 10px;\" selected='selected' value='" . esc_attr( $option['value'] ) . "'>$label</option>";
+									else
+										$r .= "\n\t<option style=\"padding-right: 10px;\" value='" . esc_attr( $option['value'] ) . "'>$label</option>";
+								}
+								echo $p . $r;
+							?>
+						</select>
+						<label class="description" for="frisco_theme_options[googlefont]"><?php _e( 'Only a few color choices at the moment.', 'friscotheme' ); ?></label>
+					</td>
+				</tr>
+
 			
 			</table>
 
@@ -155,7 +225,7 @@ function theme_options_do_page() {
  * Sanitize and validate input. Accepts an array, return a sanitized array.
  */
 function theme_options_validate( $input ) {
-	global $select_options, $radio_options;
+	global $select_options, $radio_options, $select_font_options;
 
 	// Our checkbox value is either 0 or 1
 	if ( ! isset( $input['customcss'] ) )
@@ -163,8 +233,12 @@ function theme_options_validate( $input ) {
 	$input['customcss'] = ( $input['customcss'] == 1 ? 1 : 0 );
 
 	// Our select option must actually be in our array of select options
-	if ( ! array_key_exists( $input['selectinput'], $select_options ) )
-		$input['selectinput'] = null;
+	if ( ! array_key_exists( $input['themecolor'], $select_options ) )
+		$input['themecolor'] = null;
+		
+	// Our select option must actually be in our array of select options
+	if ( ! array_key_exists( $input['googlefont'], $select_font_options ) )
+		$input['googlefont'] = null;
 
 	return $input;
 }

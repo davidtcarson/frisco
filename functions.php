@@ -3,17 +3,6 @@
 // Load up our awesome theme options
 require_once ( get_stylesheet_directory() . '/theme-options.php' );
 
-	 /*
-     * Google Font for cursive header title. This will change for sure to make it easier for users to change. 
-     */
-add_action('wp_print_styles', 'add_googlefonts');
-function add_googlefonts() {
-        $givemetypography = 'http://fonts.googleapis.com/css?family=Lobster+Two&v2';
-       
-            wp_register_style('googlewebfonts', $givemetypography);
-            wp_enqueue_style( 'googlewebfonts');
-}
-
 // special thanks to Less Framework (http://lessframework.com/)
 function go_responsive() {
 	?>
@@ -28,6 +17,9 @@ function bp_dtheme_enqueue_styles() {
 
 	// MAIN CSS
 	wp_enqueue_style( 'frisco-main', get_bloginfo('stylesheet_directory') . '/style.css', array(), $version );
+
+	$options = get_option('frisco_theme_options');
+	wp_enqueue_style( 'frisco-fonts', 'http://fonts.googleapis.com/css?family=' . str_replace(" ", "+", $options['googlefont'] ) );
 
 	// Responsive Layout
 	if ( current_theme_supports( 'bp-default-responsive' ) ) {
@@ -56,7 +48,9 @@ function bp_dtheme_setup() {
 	register_nav_menus( array(
 		'primary' => __( 'Primary Navigation', 'buddypress' ),
 	) );
-
+	
+	// Override bp-default. Use to insert css in header for font choice.
+	add_custom_image_header( 'bp_dtheme_header_style', 'bp_dtheme_admin_header_style' );
 
 	if ( !is_admin() ) {
 		// Register buttons for the relevant component templates
@@ -118,13 +112,28 @@ function add_customcss() {
 
 }
 
+function bp_dtheme_admin_header_style() {
+//Do nothing
+}
+
+function bp_dtheme_header_style() {
+	
+	$options = get_option('frisco_theme_options');
+	
+?>
+	<style type="text/css">
+		#header h1 a { font-family: <?php echo $options['googlefont']; ?>, arial, sans-serif; }
+	</style>
+
+<?php
+}
+
 function bp_dtheme_show_notice() {
 	global $pagenow;
 
 	// Bail if bp-default theme was not just activated
 	if ( empty( $_GET['activated'] ) || ( 'themes.php' != $pagenow ) || !is_admin() )
 		return;
-
 	?>
 
 	<div id="message" class="updated fade">
