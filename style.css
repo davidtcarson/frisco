@@ -451,6 +451,7 @@ div#subnav.item-list-tabs {
 }
 #nav li {
 	margin-left: 0; 
+	float: left; 
 }  
 #nav li a {
    	display: inline-block;
