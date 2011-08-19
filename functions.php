@@ -1,5 +1,12 @@
 <?php
 
+if ( !function_exists( 'bp_is_active' ) )
+	return;
+
+// If BuddyPress is not activated, switch back to the default WP theme
+if ( !defined( 'BP_VERSION' ) )
+	switch_theme( WP_DEFAULT_THEME, WP_DEFAULT_THEME );
+
 // Load up our awesome theme options
 require_once ( get_stylesheet_directory() . '/theme-options.php' );
 
@@ -15,15 +22,15 @@ function bp_dtheme_enqueue_styles() {
 	// Bump this when changes are made to bust cache
 	$version = '20110818';
 
-	// MAIN CSS
-	wp_enqueue_style( 'frisco-main', get_bloginfo('stylesheet_directory') . '/style.css', array(), $version );
-
+	// Main CSS
+		wp_enqueue_style( 'frisco-main', get_bloginfo('stylesheet_directory') . '/style.css', array(), $version );
+	// Google Font CSS
 	$options = get_option('frisco_theme_options');
-	wp_enqueue_style( 'frisco-fonts', 'http://fonts.googleapis.com/css?family=' . str_replace(" ", "+", $options['googlefont'] ) );
-
+		wp_enqueue_style( 'frisco-fonts', 'http://fonts.googleapis.com/css?family=' . str_replace(" ", "+", $options['googlefont'] ) );
 	// Responsive Layout
 	if ( current_theme_supports( 'bp-default-responsive' ) ) {
 		wp_enqueue_style( 'bp-default-responsive', get_template_directory_uri() . '/_inc/css/responsive.css', array( 'bp-default-main' ), $version );
+	
 	}
 
 }
@@ -49,9 +56,6 @@ function bp_dtheme_setup() {
 		'primary' => __( 'Primary Navigation', 'buddypress' ),
 	) );
 	
-	// Override bp-default. Use to insert css in header for font choice.
-	add_custom_image_header( 'bp_dtheme_header_style', 'bp_dtheme_admin_header_style' );
-
 	if ( !is_admin() ) {
 		// Register buttons for the relevant component templates
 		// Friends button
@@ -112,21 +116,16 @@ function add_customcss() {
 
 }
 
-function bp_dtheme_admin_header_style() {
-//Do nothing
-}
-
-function bp_dtheme_header_style() {
-	
-	$options = get_option('frisco_theme_options');
-	
+// add Google font CSS
+function add_google_font_css() {
+ $options = get_option('frisco_theme_options');
 ?>
 	<style type="text/css">
 		#header h1 a { font-family: <?php echo $options['googlefont']; ?>, arial, sans-serif; }
 	</style>
-
 <?php
 }
+add_action ( 'wp_head', 'add_google_font_css' );
 
 function bp_dtheme_show_notice() {
 	global $pagenow;
