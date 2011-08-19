@@ -23,7 +23,7 @@ function bp_dtheme_enqueue_styles() {
 	$version = '20110818';
 
 	// Main CSS
-		wp_enqueue_style( 'frisco-main', get_bloginfo('stylesheet_directory') . '/style.css', array(), $version );
+		wp_enqueue_style( 'frisco-main', get_stylesheet_directory_uri() . '/style.css', array(), $version );
 	// Google Font CSS
 	$options = get_option('frisco_theme_options');
 		wp_enqueue_style( 'frisco-fonts', 'http://fonts.googleapis.com/css?family=' . str_replace(" ", "+", $options['googlefont'] ) );
@@ -92,11 +92,11 @@ function add_colorcss() {
 	// If theme options are saved in the database
 	if( !get_option( 'frisco_theme_options' ) ) { 
 		// Load stylesheet for color choice
-		wp_register_style('colorcss', get_bloginfo('stylesheet_directory') . '/css/default.css');
+		wp_register_style('colorcss', get_stylesheet_directory_uri() . '/css/default.css');
 	} else {
 		// If not, load default color stylesheet
 		$options = get_option('frisco_theme_options');
-		wp_register_style('colorcss', get_bloginfo('stylesheet_directory') . '/css/' . $options['themecolor'] . '.css');
+		wp_register_style('colorcss', get_stylesheet_directory_uri() . '/css/' . $options['themecolor'] . '.css');
 	}
 		wp_enqueue_style( 'colorcss');
 }
@@ -108,7 +108,7 @@ function add_customcss() {
 	
 	if ( $options['customcss'] == 1 ) {
     // Load custom.css
-	    wp_register_style('customcss', get_bloginfo('stylesheet_directory') . '/custom.css');
+	    wp_register_style('customcss', get_stylesheet_directory_uri() . '/custom.css');
 		wp_enqueue_style( 'customcss');
 	} else {
     // Do nothing
