@@ -12,7 +12,7 @@
 */
 
 
-/* Inherit the default theme styles... bp-default now loads stylesheets via functions.php in bp_dtheme_enqueue_styles... but that messes with the order of things so I've temporarily added a silent bp_dtheme_enqueue_styles to the functions.php here in the child theme. This will change I'm sure. */ 
+/* Inherit the default theme styles */ 
 @import url( ../../plugins/buddypress/bp-themes/bp-default/_inc/css/default.css );
 
 /*----------------------------------------------------------------------------------------------------------------------------
@@ -799,7 +799,7 @@ body.activity-permalink .activity-list li .activity-avatar img.avatar {
 	-moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset; 
 	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
 }
-body.activity-permalink .activity-list li .activity-avatar img.avatar {
+body.activity-permalink .activity-list li .activity-avatar img.avatar, .activity-permalink .activity-list li.mini .activity-avatar img.avatar {
     width: 100px;
 	height: 100px;
 }
@@ -911,6 +911,7 @@ body.activity-permalink div.activity-comments {
 }
 body.activity-permalink ul#activity-stream { 
 	margin-top: 3em; 
+	margin-bottom: 3em; 
 }
 #whats-new-options {
     width: 94%;
