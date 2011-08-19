@@ -2,11 +2,11 @@
  * Theme Name: Frisco
  * Theme URI: http://friscotheme.com
  * Description: Derived almost entirely from the BuddyPress Default theme, the Frisco adds some minor HTML changes and a fresh coat of CSS. 
- * Version: 1.5.01-bleeding
+ * Version: 1.5
  * Author: David Carson
  * Author URI: http://davidtcarson.com
- * License: GNU General Public License
- * License URI: license.txt
+ * License: GNU General Public License v2.0
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Template: bp-default
  * Tags: buddypress
 */
@@ -1084,14 +1084,6 @@ body.forums #container #item-body {
 body.profile .bp-widget h4 {
 	margin-top: 1em; 
 }
-/*--------------------------------------------------------------
-Want to customize the CSS? Put your custom styles below. 
---------------------------------------------------------------*/
-
-
-
-
-
 
 /*--------------------------------------------------------------
 The media queries below were taken from Less Framework (http://lessframework.com/). 
