@@ -121,7 +121,7 @@ function add_google_font_css() {
  $options = get_option('frisco_theme_options');
 ?>
 	<style type="text/css">
-		#header h1 a { font-family: <?php echo $options['googlefont']; ?>, arial, sans-serif; }
+		#header h1 a { font-family: "<?php echo $options['googlefont']; ?>", arial, sans-serif; }
 	</style>
 <?php
 }
