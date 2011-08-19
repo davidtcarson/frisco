@@ -206,7 +206,7 @@ function theme_options_do_page() {
 								echo $p . $r;
 							?>
 						</select>
-						<label class="description" for="frisco_theme_options[googlefont]"><?php _e( 'Only a few color choices at the moment.', 'friscotheme' ); ?></label>
+						<label class="description" for="frisco_theme_options[googlefont]"><?php _e( 'Choose a font for the site title.', 'friscotheme' ); ?></label>
 					</td>
 				</tr>
 
