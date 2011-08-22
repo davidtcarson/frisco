@@ -92,13 +92,13 @@ function add_colorcss() {
 	// If theme options are saved in the database
 	if( !get_option( 'frisco_theme_options' ) ) { 
 		// Load stylesheet for color choice
-		wp_register_style('colorcss', get_stylesheet_directory_uri() . '/css/default.css');
+		wp_register_style('frisco-color-css', get_stylesheet_directory_uri() . '/css/default.css');
 	} else {
 		// If not, load default color stylesheet
 		$options = get_option('frisco_theme_options');
-		wp_register_style('colorcss', get_stylesheet_directory_uri() . '/css/' . $options['themecolor'] . '.css');
+		wp_register_style('frisco-color-css', get_stylesheet_directory_uri() . '/css/' . $options['themecolor'] . '.css');
 	}
-		wp_enqueue_style( 'colorcss');
+		wp_enqueue_style( 'frisco-color-css');
 }
 
 add_action('wp_print_styles', 'add_customcss');
