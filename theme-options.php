@@ -217,6 +217,13 @@ function theme_options_do_page() {
 				<input type="submit" class="button-primary" value="<?php _e( 'Save Options', 'friscotheme' ); ?>" />
 			</p>
 		</form>
+		
+		<h3>Tips</h3>
+		<p><strong>&#42;USE THE NEW ADMIN BAR:</strong> By default, BuddyPress is using the "BuddyBar". If you'd prefer to use the new admin bar, add <code>define('BP_USE_WP_ADMIN_BAR', true);</code> to your <code>wp-config.php</code> file just above where it says "That's all, stop editing! Happy blogging."</p>
+		<p><strong>&#42;USE WIDGETS:</strong> This theme uses the same sidebar and footer widgets available to the BuddyPress default theme. <a href="<?php echo home_url(); ?>/wp-admin/widgets.php">Use them!</a> If you want to show different widgets on different pages, use the <a href="http://wordpress.org/extend/plugins/widget-logic/">Widget Logic Plugin</a> (<a href="<?php echo home_url(); ?>/wp-admin/plugin-install.php?tab=search&type=term&s=widget+logic&plugin-search-input=Search+Plugins">link to install</a>) along with some <a href="http://codex.wordpress.org/Conditional_Tags">WordPress conditional tags</a> or <a href="http://codex.buddypress.org/developer-docs/conditional-template-tags/">BuddyPress conditional tags</a>.</p>
+		<p><strong>&#42;GET SUPPORT:</strong> This theme is free and support is not included. But, if you get stuck or if you have any questions, start a new thread in the <a href="http://wordpress.org/support/forum/themes-and-templates">WordPress theme forums</a> or the <a href="http://buddypress.org/community/groups/creating-extending/forum/">BuddyPress theme forums</a>. <em>IMPORTANT:</em> If you post in the WordPress or BuddyPress forums, make sure you add the tag "Frisco" or "Frisco Theme" to the post. This will make it easier for the theme author to become aware of your issue.</p>
+		
+		
 	</div>
 	<?php
 }
