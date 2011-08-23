@@ -1,41 +1,10 @@
 <?php
 
-if ( !function_exists( 'bp_is_active' ) )
-	return;
-
 // If BuddyPress is not activated, switch back to the default WP theme
 if ( !defined( 'BP_VERSION' ) )
 	switch_theme( WP_DEFAULT_THEME, WP_DEFAULT_THEME );
-
-// Load up our awesome theme options
-require_once ( get_stylesheet_directory() . '/theme-options.php' );
-
-// special thanks to Less Framework (http://lessframework.com/)
-function go_responsive() {
-	?>
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-	<?php 
-}
-add_action ( 'bp_head', 'go_responsive' );
-		
-function bp_dtheme_enqueue_styles() {
-	// Bump this when changes are made to bust cache
-	$version = '20110818';
-
-	// Main CSS
-		wp_enqueue_style( 'frisco-main', get_stylesheet_directory_uri() . '/style.css', array(), $version );
-	// Google Font CSS
-	$options = get_option('frisco_theme_options');
-		wp_enqueue_style( 'frisco-fonts', 'http://fonts.googleapis.com/css?family=' . str_replace(" ", "+", $options['googlefont'] ) );
-	// Responsive Layout
-	if ( current_theme_supports( 'bp-default-responsive' ) ) {
-		wp_enqueue_style( 'bp-default-responsive', get_template_directory_uri() . '/_inc/css/responsive.css', array( 'bp-default-main' ), $version );
 	
-	}
-
-}
-add_action( 'wp_print_styles', 'bp_dtheme_enqueue_styles' );
-
+// Set up theme. Taken mostly from bp-default theme. 
 function bp_dtheme_setup() {
 	global $bp;
 
@@ -84,9 +53,22 @@ function bp_dtheme_setup() {
 }
 add_action( 'after_setup_theme', 'bp_dtheme_setup' );
 
-    /*
-     * New theme option.  
-     */
+// Load up Frisco theme options
+require_once ( get_stylesheet_directory() . '/theme-options.php' );
+
+// Add main CSS and Google Font CSS	
+function bp_dtheme_enqueue_styles() {
+	// Bump this when changes are made to bust cache
+	$version = '20110818';
+	// Main CSS
+		wp_enqueue_style( 'frisco-main', get_stylesheet_directory_uri() . '/style.css', array(), $version );
+	// Google Font CSS
+	$options = get_option('frisco_theme_options');
+		wp_enqueue_style( 'frisco-fonts', 'http://fonts.googleapis.com/css?family=' . str_replace(" ", "+", $options['googlefont'] ) );
+}
+add_action( 'wp_print_styles', 'bp_dtheme_enqueue_styles' );
+
+// Add color choice CSS from theme options. 
 add_action('wp_print_styles', 'add_colorcss');
 function add_colorcss() {
 	// If theme options are saved in the database
@@ -101,6 +83,7 @@ function add_colorcss() {
 		wp_enqueue_style( 'frisco-color-css');
 }
 
+// Add custom.css, if selected in theme options. 
 add_action('wp_print_styles', 'add_customcss');
 function add_customcss() {
 
@@ -113,24 +96,42 @@ function add_customcss() {
 	} else {
     // Do nothing
 	}
-
 }
 
-// add Google font CSS
+// Load up functions-custom.php, if the user has selected that option in theme options.
+add_action( 'after_setup_theme', 'add_custom_functions' );
+function add_custom_functions() {
+	$options = get_option('frisco_theme_options');
+	
+	if ( $options['customphp'] == 1 ) {
+		require_once ( get_stylesheet_directory() . '/functions-custom.php' );
+	}
+}
+
+// Add Google font CSS to header 
 function add_google_font_css() {
  $options = get_option('frisco_theme_options');
 ?>
 	<style type="text/css">
-		#header h1 a { font-family: "<?php echo $options['googlefont']; ?>", arial, sans-serif; }
+		#header h1 a { font-family: "<?php echo $options['googlefont']; ?>","Helvetica Neue",Helvetica,Arial,sans-serif; }
 	</style>
 <?php
 }
 add_action ( 'wp_head', 'add_google_font_css' );
 
+// Add viewport settings for mobile access. From Less Framework (http://lessframework.com/)
+function add_responsive() {
+	?>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+	<?php 
+}
+add_action ( 'bp_head', 'add_responsive' );
+
+// Show friendly message upon theme activation
 function bp_dtheme_show_notice() {
 	global $pagenow;
 
-	// Bail if bp-default theme was not just activated
+	// Bail if Frisco theme was not just activated
 	if ( empty( $_GET['activated'] ) || ( 'themes.php' != $pagenow ) || !is_admin() )
 		return;
 	?>
@@ -145,7 +146,7 @@ function bp_dtheme_show_notice() {
 }
 add_action( 'admin_notices', 'bp_dtheme_show_notice' );
 
-// Batten down the hatches, we're going full-width... there's got to be a better way to make the theme full-width, but this will work in the meantime. Everything below is just inserting divs to help style a full-width background. 
+// Adding full width backgrounds requires some extra divs. We'll add those using actions starting below. 
 function div_bp_before_header() {
 	?>
 		<div id="bp-before-header" class="fullwidth">
@@ -243,21 +244,18 @@ function div_bp_after_group_header() {
 }
 add_action ( 'bp_after_group_header', 'div_bp_after_group_header' );
 
-//site credits
+// Add site credits by filtering exising text in footer.php from bp-default.
 add_filter('gettext', 'sitecredits', 20, 3);
 /**
- * Edit the default credits to add Frisco link. Remove if you'd like. 
+ * Edit the default credits to add Frisco link. Remove it if you'd like or modify it to display whatever you want. 
  *
  * @link http://codex.wordpress.org/Plugin_API/Filter_Reference/gettext
  */
 function sitecredits( $translated_text, $untranslated_text, $domain ) {
-
     $custom_field_text = 'Proudly powered by <a href="%1$s">WordPress</a> and <a href="%2$s">BuddyPress</a>.';
-
     if ( $untranslated_text === $custom_field_text ) {
         return 'Proudly powered by <a href="http://wordpress.org">WordPress</a>, <a href="http://buddypress.org">BuddyPress</a> and the <a href="http://friscotheme.com/">Frisco Theme</a>.';
     }
-
     return $translated_text;
 }
 
