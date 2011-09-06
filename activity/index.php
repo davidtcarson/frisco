@@ -76,16 +76,13 @@
 
 						<?php do_action( 'bp_before_activity_type_tab_mentions' ); ?>
 
-						<li id="activity-mentions"><a href="<?php echo bp_loggedin_user_domain() . bp_get_activity_slug() . '/mentions/'; ?>" title="<?php _e( 'Activity that I have been mentioned in.', 'buddypress' ); ?>"><?php _e( 'Public Mentions', 'buddypress' ); ?><?php if ( bp_get_total_mention_count_for_user( bp_loggedin_user_id() ) ) : ?> <strong><?php printf( __( '<span>%s new</span>', 'buddypress' ), bp_get_total_mention_count_for_user( bp_loggedin_user_id() ) ); ?></strong><?php endif; ?></a></li>
+						<li id="activity-mentions"><a href="<?php echo bp_loggedin_user_domain() . bp_get_activity_slug() . '/mentions/'; ?>" title="<?php _e( 'Activity that I have been mentioned in.', 'buddypress' ); ?>"><?php _e( 'Mentions', 'buddypress' ); ?><?php if ( bp_get_total_mention_count_for_user( bp_loggedin_user_id() ) ) : ?> <strong><?php printf( __( '<span>%s new</span>', 'buddypress' ), bp_get_total_mention_count_for_user( bp_loggedin_user_id() ) ); ?></strong><?php endif; ?></a></li>
 
 					<?php endif; ?>
 
 					<?php do_action( 'bp_activity_type_tabs' ); ?>
 				</ul>
 			</div><!-- .item-list-tabs -->
-
-<div id="sidebar-squeeze">			
-	<div id="main-column">
 
 			<div class="item-list-tabs no-ajax" id="subnav" role="navigation">
 				<ul>
@@ -135,6 +132,9 @@
 				</ul>
 			</div><!-- .item-list-tabs -->
 
+<div id="sidebar-squeeze">			
+	<div id="main-column">
+	
 			<?php do_action( 'bp_before_directory_activity_list' ); ?>
 
 			<div class="activity" role="main">

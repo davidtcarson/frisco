@@ -30,9 +30,9 @@
 				<?php do_action( 'bp_after_group_body' ) ?>
 			</div><!-- #item-body -->
 
-			<?php endwhile; endif; ?>
-
 			<?php do_action( 'bp_after_group_plugin_template' ) ?>
+
+			<?php endwhile; endif; ?>
 
 	</div><!-- #main-column -->
 	<?php get_sidebar( 'buddypress' ); ?>
@@ -42,3 +42,5 @@
 	</div><!-- #content -->
 
 <?php get_footer( 'buddypress' ) ?>
+
+

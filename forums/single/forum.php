@@ -3,7 +3,7 @@
 	<div id="content">
 		<div class="padder">
 
-			<?php do_action( 'bp_before_group_home_content' ) ?>
+			<?php do_action( 'bp_before_directory_forums_content' ); ?>
 
 				<div id="item-header" role="complementary">
 
@@ -13,19 +13,19 @@
 
 <div id="sidebar-squeeze">			
 	<div id="main-column">
-
+	
 				<div id="item-nav">
 					<div class="item-list-tabs no-ajax" id="subnav" role="navigation">
 						<ul>
 
 							<li>
-								<a href="#post-new" class="show-hide-new"><?php _e( 'New Topic', 'buddypress' ) ?></a>
+								<a href="#post-new" class="show-hide-new"><?php _e( 'New Topic', 'buddypress' ); ?></a>
 							</li>
 
 							<?php if ( bp_forums_has_directory() ) : ?>
 
 								<li>
-									<a href="<?php bp_forums_directory_permalink() ?>"><?php _e( 'Forum Directory', 'buddypress') ?></a>
+									<a href="<?php bp_forums_directory_permalink() ?>"><?php _e( 'Forum Directory', 'buddypress'); ?></a>
 								</li>
 
 							<?php endif; ?>
@@ -60,7 +60,7 @@
 
 				</div>
 			</div><!-- #new-topic-post -->
-
+			
 </div><!-- #main-column -->
 	<?php get_sidebar( 'buddypress' ); ?>
 </div><!-- #sidebar-squeeze -->

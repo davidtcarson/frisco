@@ -52,7 +52,7 @@
 
 <div id="sidebar-squeeze">			
 	<div id="main-column">
-
+	
 				<div class="item-list-tabs" id="subnav" role="navigation">
 					<ul>
 
@@ -153,12 +153,11 @@
 
 				<?php endif; ?>
 			</div><!-- #new-topic-post -->
-			
+
 			<?php do_action( 'bp_after_new_topic_form' ); ?>
-			
+
 			<?php do_action( 'bp_after_directory_forums_content' ); ?>
 
-			
 	</div><!-- #main-column -->
 		<?php get_sidebar( 'buddypress' ); ?>
 </div><!-- #sidebar-squeeze -->
