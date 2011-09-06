@@ -56,7 +56,8 @@ input[type="reset"],
 input[type="button"], 
 div.generic-button a,
 span.user-nicename, 
-#item-header-content span.highlight
+#item-header-content span.highlight, 
+body .navigation a 
 { 
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
@@ -87,7 +88,8 @@ body div#new-topic-post,
 .my-groups div#item-header,
 .forums div#item-header,
 .my-profile div#item-header,
-.settings div#item-header {
+.settings div#item-header, 
+.groups div#item-header {
 	background: #EAEAEA;
 	margin: -19px -19px 0;
 	padding: 19px 19px 0;
@@ -687,7 +689,8 @@ a.button, button,
 input[type="submit"], 
 input[type="reset"], 
 input[type="button"], 
-div.generic-button a {
+div.generic-button a, 
+body .navigation a {
     background: #cdcdcd; 
 	background: -moz-linear-gradient(top, #fbfbfb 0%, #cdcdcd 100%); 
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fbfbfb), color-stop(100%,#cdcdcd)); 
@@ -720,7 +723,8 @@ button:hover,
 input[type="submit"]:hover, 
 input[type="reset"]:hover, 
 input[type="button"]:hover, 
-div.generic-button a:hover {
+div.generic-button a:hover, 
+body .navigation a:hover {
     background: #b3b3b3; 
 	background: -moz-linear-gradient(top, #fbfbfb 0%, #b3b3b3 100%); 
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fbfbfb), color-stop(100%,#b3b3b3)); 
@@ -742,7 +746,8 @@ button:active,
 input[type="submit"]:active, 
 input[type="reset"]:active, 
 input[type="button"]:active, 
-div.generic-button a:active {
+div.generic-button a:active, 
+body .navigation a:active {
     background: #b3b3b3; 
 	background: -moz-linear-gradient(top, #b3b3b3 0%, #fbfbfb 100%); 
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b3b3b3), color-stop(100%,#fbfbfb)); 
@@ -766,6 +771,11 @@ input.full-width[type="button"] {
     padding-right: 0 !important;
     text-align: center;
     width: 100%;
+}
+#nav-above, 
+#nav-below {
+	margin: 20px 0; 
+    padding: 4px 12px;
 }
 body #subnav ul li a {
 	-moz-border-radius: 1em;
@@ -991,22 +1001,32 @@ div#sidebar div.item-options {
 	padding: 18px 20px;
 }
 .sticky.post {
-    background:#fffdd0;
-    border-top: 4px solid #fcf899;
+    background:#1D1D1D;
 }
 .sticky.post div.author-box {
-	background: #fcf899;
+	background: #000;
 }
 .sticky.post  p.date, 
 .sticky.post p.postmetadata {
-    border-bottom: 1px solid #fcf899;
-    border-top: 1px solid #fcf899;
+    border-bottom: 1px solid #999;
+    border-top: 1px solid #999;
+}
+span.sticky-post {
+	background: #333;
+    color: #FFF;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 .sticky.post .date {
 	color: #999; 
     background: transparent; 
 }
-
+.sticky.post div.author-box img {
+    border-color: #333;
+}
+.sticky.post .entry, .sticky.post h2.posttitle a {
+    color: #EEE;
+}
 body.directory.groups div#content .padder, 
 body.directory.members div#content .padder, 
 body.directory.blogs div#content .padder, 
@@ -1086,6 +1106,9 @@ body.profile .bp-widget h4 {
 	margin-bottom: 20px; 
 }
 #wp-admin-bar-favorite-topics {
+	display: none; 
+}
+#adminbarsearch-wrap {
 	display: none; 
 }
 
