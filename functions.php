@@ -104,7 +104,7 @@ function add_custom_functions() {
 	$options = get_option('frisco_theme_options');
 	
 	if ( $options['customphp'] == 1 ) {
-		require_once ( get_stylesheet_directory() . '/functions-custom.php' );
+		get_template_part('functions-custom');
 	}
 }
 
@@ -145,6 +145,13 @@ function bp_dtheme_show_notice() {
 	<?php
 }
 add_action( 'admin_notices', 'bp_dtheme_show_notice' );
+
+// Use a better image than default mystery man
+function frisco_core_set_avatar_constants() {
+	define( 'BP_AVATAR_DEFAULT', get_stylesheet_directory_uri() . '/images/mystery-man.jpg' );
+	define( 'BP_AVATAR_DEFAULT_THUMB', get_stylesheet_directory_uri() . '/images/mystery-man-50.jpg' );
+}
+add_action( 'bp_init', 'frisco_core_set_avatar_constants', 2 );
 
 // Adding full width backgrounds requires some extra divs. We'll add those using actions starting below. 
 function div_bp_before_header() {
