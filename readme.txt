@@ -9,12 +9,7 @@ There is no demo site yet, but I have made some screenshots. See https://s3.amaz
 Upload and activate the Frisco theme under "Appearance > Themes" menu in your WordPress admin area.
 
 --- Getting Started with Frisco ---
-Go to "Appearance > Theme Options" to configure basic color and font options. Create a custom.css file in the root directory of the theme and enable the custom stylesheet in Theme Options to override default styles.  
-
-*USE THE NEW ADMIN BAR IN BUDDYPRESS*
-There's a new admin bar coming to BuddyPress 1.5. To use that new admin bar on your development site, add the following line to your wp-config.php file in your root directory: 
-
-define('BP_USE_WP_ADMIN_BAR', true);
+Go to "Appearance > Theme Options" to configure basic color and font options.
 
 --- Credits ---
 Google Web Fonts - http://www.google.com/webfonts
