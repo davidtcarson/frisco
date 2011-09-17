@@ -61,10 +61,12 @@
 
 				elseif ( bp_is_user_forums() ) :
 					locate_template( array( 'members/single/forums.php'  ), true );
-
+				
+				elseif ( bp_is_user_settings() ) :
+					locate_template( array( 'members/single/settings.php'  ), true );
 				// If nothing sticks, load a generic template
 				else :
-					locate_template( array( 'members/single/front.php'    ), true );
+					locate_template( array( 'members/single/plugins.php'   ), true );
 
 				endif;
 
