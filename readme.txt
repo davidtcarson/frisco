@@ -13,6 +13,3 @@ Go to "Appearance > Theme Options" to configure basic color and font options.
 
 --- Credits ---
 Google Web Fonts - http://www.google.com/webfonts
-
---- Changelog ---
-.01 Basic functionality
