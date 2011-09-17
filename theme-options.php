@@ -205,7 +205,7 @@ function theme_options_do_page() {
 				<tr valign="top"><th scope="row"><?php _e( 'Custom Stylesheet', 'friscotheme' ); ?></th>
 					<td>
 						<input id="frisco_theme_options[customcss]" name="frisco_theme_options[customcss]" type="checkbox" value="1" <?php checked( '1', $options['customcss'] ); ?> />
-						<label class="description" for="frisco_theme_options[customcss]"><?php _e( 'Check this box to use a custom stylesheet. Put custom.css in the main theme directory.', 'friscotheme' ); ?></label>
+						<label class="description" for="frisco_theme_options[customcss]"><?php _e( 'Check this box to use a custom stylesheet. Create <code>custom.css</code> in the main theme directory.', 'friscotheme' ); ?></label>
 					</td>
 				</tr>
 				
@@ -217,7 +217,7 @@ function theme_options_do_page() {
 				<tr valign="top"><th scope="row"><?php _e( 'Custom Functions', 'friscotheme' ); ?></th>
 					<td>
 						<input id="frisco_theme_options[customphp]" name="frisco_theme_options[customphp]" type="checkbox" value="1" <?php checked( '1', $options['customphp'] ); ?> />
-						<label class="description" for="frisco_theme_options[customphp]"><?php _e( 'Check this box to add an extra functions file for your own magic. Put functions-custom.php in the main theme directory.', 'friscotheme' ); ?></label>
+						<label class="description" for="frisco_theme_options[customphp]"><?php _e( 'Check this box to use a custom functions file. Create <code>functions-custom.php</code> in the main theme directory.', 'friscotheme' ); ?></label>
 					</td>
 				</tr>	
 			</table>
