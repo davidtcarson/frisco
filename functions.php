@@ -54,12 +54,14 @@ function bp_dtheme_setup() {
 add_action( 'after_setup_theme', 'bp_dtheme_setup' );
 
 // Load up Frisco theme options
-require_once ( get_stylesheet_directory() . '/theme-options.php' );
+require_once( get_stylesheet_directory() . '/theme-options.php' );
 
 // Add main CSS and Google Font CSS	
 function bp_dtheme_enqueue_styles() {
 	// Bump this when changes are made to bust cache
 	$version = '20110818';
+	// Register our main stylesheet
+		wp_enqueue_style( 'bp-default-main', get_template_directory_uri() . '/_inc/css/default.css', array(), $version );
 	// Main CSS
 		wp_enqueue_style( 'frisco-main', get_stylesheet_directory_uri() . '/style.css', array(), $version );
 	// Google Font CSS
@@ -69,8 +71,8 @@ function bp_dtheme_enqueue_styles() {
 add_action( 'wp_print_styles', 'bp_dtheme_enqueue_styles' );
 
 // Add color choice CSS from theme options. 
-add_action('wp_print_styles', 'add_colorcss');
-function add_colorcss() {
+add_action('wp_print_styles', 'frisco_add_colorcss');
+function frisco_add_colorcss() {
 	// If theme options are saved in the database
 	if( !get_option( 'frisco_theme_options' ) ) { 
 		// Load stylesheet for color choice
@@ -84,8 +86,8 @@ function add_colorcss() {
 }
 
 // Add custom.css, if selected in theme options. 
-add_action('wp_print_styles', 'add_customcss');
-function add_customcss() {
+add_action('wp_print_styles', 'frisco_add_customcss');
+function frisco_add_customcss() {
 
 	$options = get_option('frisco_theme_options');
 	
@@ -99,8 +101,8 @@ function add_customcss() {
 }
 
 // Load up functions-custom.php, if the user has selected that option in theme options.
-add_action( 'after_setup_theme', 'add_custom_functions' );
-function add_custom_functions() {
+add_action( 'after_setup_theme', 'frisco_add_custom_functions' );
+function frisco_add_custom_functions() {
 	$options = get_option('frisco_theme_options');
 	
 	if ( $options['customphp'] == 1 ) {
@@ -109,7 +111,7 @@ function add_custom_functions() {
 }
 
 // Add Google font CSS to header 
-function add_google_font_css() {
+function frisco_add_google_font_css() {
  $options = get_option('frisco_theme_options');
 ?>
 	<style type="text/css">
@@ -117,15 +119,15 @@ function add_google_font_css() {
 	</style>
 <?php
 }
-add_action ( 'wp_head', 'add_google_font_css' );
+add_action ( 'wp_head', 'frisco_add_google_font_css' );
 
 // Add viewport settings for mobile access. From Less Framework (http://lessframework.com/)
-function add_responsive() {
+function frisco_add_responsive() {
 	?>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 	<?php 
 }
-add_action ( 'bp_head', 'add_responsive' );
+add_action ( 'bp_head', 'frisco_add_responsive' );
 
 // Show friendly message upon theme activation
 function bp_dtheme_show_notice() {
@@ -154,111 +156,111 @@ function frisco_core_set_avatar_constants() {
 add_action( 'bp_init', 'frisco_core_set_avatar_constants', 2 );
 
 // Adding full width backgrounds requires some extra divs. We'll add those using actions starting below. 
-function div_bp_before_header() {
+function frisco_div_bp_before_header() {
 	?>
 		<div id="bp-before-header" class="fullwidth">
 	<?php 
 }
-add_action ( 'bp_before_header', 'div_bp_before_header' );
+add_action ( 'bp_before_header', 'frisco_div_bp_before_header' );
 
 // close the bp-before-header div
-function div_bp_after_header() {
+function frisco_div_bp_after_header() {
 	?>
 		</div> 
 	<?php
 }
-add_action ( 'bp_after_header', 'div_bp_after_header' );
+add_action ( 'bp_after_header', 'frisco_div_bp_after_header' );
 
 // This could have gone in div_bp_after_header, but we might want to add something later.
-function div_bp_before_container() {
+function frisco_div_bp_before_container() {
 	?>
 		<div id="bp-before-container" class="fullwidth">
 	<?php 
 }
-add_action ( 'bp_before_container', 'div_bp_before_container' );
+add_action ( 'bp_before_container', 'frisco_div_bp_before_container' );
 
 // close the bp-before-container div
-function div_bp_after_container() {
+function frisco_div_bp_after_container() {
 	?>
 		</div> 
 	<?php
 }
-add_action ( 'bp_after_container', 'div_bp_after_container' );
+add_action ( 'bp_after_container', 'frisco_div_bp_after_container' );
 
 // Batten down the hatches, we're going full-width
-function div_bp_before_footer() {
+function frisco_div_bp_before_footer() {
 	?>
 		<div id="bp-before-footer" class="fullwidth">
 	<?php 
 }
-add_action ( 'bp_before_footer', 'div_bp_before_footer' );
+add_action ( 'bp_before_footer', 'frisco_div_bp_before_footer' );
 
 // close the bp-before-footer div
-function div_bp_after_footer() {
+function frisco_div_bp_after_footer() {
 	?>
 		</div> 
 	<?php
 }
-add_action ( 'bp_after_footer', 'div_bp_after_footer' );
+add_action ( 'bp_after_footer', 'frisco_div_bp_after_footer' );
 
 
 // Batten down the hatches, we're going full-width
-function div_bp_before_activity_post_form() {
+function frisco_div_bp_before_activity_post_form() {
 	?>
 		<div id="bp-before-activity-post-form">
 	<?php 
 }
-add_action ( 'bp_before_activity_post_form', 'div_bp_before_activity_post_form' );
+add_action ( 'bp_before_activity_post_form', 'frisco_div_bp_before_activity_post_form' );
 
 // close the bp-before-activity-post-form div
-function div_bp_after_activity_post_form() {
+function frisco_div_bp_after_activity_post_form() {
 	?>
 		</div> 
 	<?php
 }
-add_action ( 'bp_after_activity_post_form', 'div_bp_after_activity_post_form' );
+add_action ( 'bp_after_activity_post_form', 'frisco_div_bp_after_activity_post_form' );
 
 // Batten down the hatches, we're going full-width
-function div_bp_before_member_header() {
+function frisco_div_bp_before_member_header() {
 	?>
 		<div id="bp-before-member-header">
 	<?php 
 }
-add_action ( 'bp_before_member_header', 'div_bp_before_member_header' );
+add_action ( 'bp_before_member_header', 'frisco_div_bp_before_member_header' );
 
 // close the bp-before-member-header div
-function div_bp_after_member_header() {
+function frisco_div_bp_after_member_header() {
 	?>
 		</div> 
 	<?php
 }
-add_action ( 'bp_after_member_header', 'div_bp_after_member_header' );
+add_action ( 'bp_after_member_header', 'frisco_div_bp_after_member_header' );
 
 
 // Batten down the hatches, we're going full-width
-function div_bp_before_group_header() {
+function frisco_div_bp_before_group_header() {
 	?>
 		<div id="bp-before-group-header">
 	<?php 
 }
-add_action ( 'bp_before_group_header', 'div_bp_before_group_header' );
+add_action ( 'bp_before_group_header', 'frisco_div_bp_before_group_header' );
 
 // close the bp-before-group-header div
-function div_bp_after_group_header() {
+function frisco_div_bp_after_group_header() {
 	?>
 		</div> 
 	<?php
 }
-add_action ( 'bp_after_group_header', 'div_bp_after_group_header' );
+add_action ( 'bp_after_group_header', 'frisco_div_bp_after_group_header' );
 
 // Add site credits by filtering exising text in footer.php from bp-default.
-add_filter('gettext', 'sitecredits', 20, 3);
+add_filter('gettext', 'frisco_sitecredits', 20, 3);
 /**
  * Edit the default credits to add Frisco link. Remove it if you'd like or modify it to display whatever you want. 
  *
  * @link http://codex.wordpress.org/Plugin_API/Filter_Reference/gettext
  */
-function sitecredits( $translated_text, $untranslated_text, $domain ) {
+function frisco_sitecredits( $translated_text, $untranslated_text, $domain ) {
     $custom_field_text = 'Proudly powered by <a href="%1$s">WordPress</a> and <a href="%2$s">BuddyPress</a>.';
     if ( $untranslated_text === $custom_field_text ) {
         return 'Proudly powered by <a href="http://wordpress.org">WordPress</a>, <a href="http://buddypress.org">BuddyPress</a> and the <a href="http://friscotheme.com/">Frisco Theme</a>.';
