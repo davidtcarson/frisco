@@ -1,10 +1,10 @@
 /**
- * Theme Name: Frisco
+ * Theme Name: Frisco for BuddyPress
  * Theme URI: http://friscotheme.com
- * Description: Derived almost entirely from the BuddyPress Default theme, the Frisco adds some minor HTML changes and a fresh coat of CSS. 
- * Version: 1.5
+ * Description: Derived almost entirely from the BuddyPress Default theme, Frisco for BuddyPress adds some minor HTML changes and a fresh coat of CSS. There is some responsivenss built-in to the theme, and this will be improved in future versions.
+ * Version: 1.5.01
  * Author: David Carson
- * Author URI: http://friscotheme.com
+ * Author URI: http://davidtcarson.com
  * License: GNU General Public License v2.0
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Template: bp-default
@@ -12,9 +12,6 @@
  * Tags: buddypress
 */
 
-
-/* Inherit the default theme styles */ 
-@import url( ../../plugins/buddypress/bp-themes/bp-default/_inc/css/default.css );
 
 /*----------------------------------------------------------------------------------------------------------------------------
 Frisco Styles - Overriding bp-default css. 
@@ -37,6 +34,8 @@ body#bp-default #wp-admin-bar .padder {
 	min-width: 960px;
 	margin: 0 auto;
 	clear:both; 
+	background: #EAEAEA;
+    float: left;
 }
 body,
 h1,
@@ -115,7 +114,9 @@ body.blog div#container,
 body.single div#container,
 body.archive div#container,
 body.error404 div#container,
-body.activation div#container {
+body.activation div#container,
+body.search-results div#container,  
+body.search-no-results div#container {
 	width: 960px;
 	-webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.27), 0 0 40px rgba(0,0,0,0.06) inset;
 	-moz-box-shadow: 0 1px 4px rgba(0,0,0,0.27), 0 0 40px rgba(0,0,0,0.06) inset;
@@ -126,7 +127,9 @@ body.page div#content .padder,
 body.blog div#content .padder,
 body.single div#content .padder,
 body.archive div#content .padder,
-body.activation div#content .padder {
+body.activation div#content .padder,
+body.search-results div#content .padder,  
+body.search-no-results div#content .padder {
 	margin-right: 226px;
 	background: #FFF;
 }
@@ -306,7 +309,7 @@ div.activity-meta a.acomment-reply {
 	border: none;
 }
 div.activity-meta a.acomment-reply:hover,
-.activity-comments a.acomment-reply:hover {
+.activity-comments a.acomment-reply:hover, {
 	background: #FFA200;
 	color: #FFF;
 }
@@ -363,7 +366,6 @@ body a.delete-activity-single:hover {
 	color: #333;
 	height: auto;
 	margin-bottom: 0;
-	border-bottom: 1px solid #CCC;
 	filter: none;
 	padding: 0;
 }
@@ -606,8 +608,7 @@ nav li.selected a {
 	min-height: 30px; 
     width: 100%;
     z-index: 99999;
-    margin-top: 1em; 
-    margin-bottom: 1em; 
+	margin: 0 auto; 
 }
 #header #navigation {
 	z-index: 99999; 
@@ -641,7 +642,7 @@ div#message.updated {
 body.profile div#message.updated {
 	margin: 10px auto; 
 }
-div#message.updated p, #item-header div#message p {
+#item-header div#message p {
     background: #DFFCD9;
     border: none;
     color: #7B6B01;
@@ -690,7 +691,9 @@ input[type="submit"],
 input[type="reset"], 
 input[type="button"], 
 div.generic-button a, 
-body .navigation a {
+body .navigation a, 
+body.single a.comment-reply-link, 
+body.page a.comment-reply-link {
     background: #CDCDCD; 
 	background: -moz-linear-gradient(top, #FBFBFB 0%, #CDCDCD 100%); 
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FBFBFB), color-stop(100%,#CDCDCD)); 
@@ -724,7 +727,9 @@ input[type="submit"]:hover,
 input[type="reset"]:hover, 
 input[type="button"]:hover, 
 div.generic-button a:hover, 
-body .navigation a:hover {
+body .navigation a:hover, 
+body.single a.comment-reply-link:hover, 
+body.page a.comment-reply-link:hover {
     background: #B3B3B3; 
 	background: -moz-linear-gradient(top, #FBFBFB 0%, #B3B3B3 100%); 
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FBFBFB), color-stop(100%,#B3B3B3)); 
@@ -733,7 +738,7 @@ body .navigation a:hover {
 	background: -ms-linear-gradient(top, #FBFBFB 0%,#B3B3B3 100%); 
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FBFBFB', endColorstr='#B3B3B3',GradientType=0 ); 
 	background: linear-gradient(top, #FBFBFB 0%,#B3B3B3  100%); 
-    border-color: #aaa #888 #888 #aaa;
+    border-color: #AAA #888 #888 #AAA;
     border-right: 1px solid #888;
     border-style: solid;
     border-width: 1px;
@@ -1109,6 +1114,27 @@ body.profile .bp-widget h4 {
 	display: none; 
 }
 #adminbarsearch-wrap {
+	display: none; 
+}
+
+body.single a.comment-reply-link,
+body.page a.comment-reply-link {
+	font-size: 11px; 
+	font-weight: normal; 
+}
+body.search-results h2.pagetitle, 
+body.search-no-results h2.pagetitle {
+	display: none; 
+}
+.nav-wrap {
+	width: 100%;
+	float: left; 
+	margin: 0 auto;
+	background: #FFF; 
+	padding: 1em 0; 
+	border-bottom: 1px solid #CCCCCC;
+}
+body.activity div#message.updated {
 	display: none; 
 }
 
