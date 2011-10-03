@@ -59,7 +59,7 @@ require_once( get_stylesheet_directory() . '/theme-options.php' );
 // Add main CSS and Google Font CSS	
 function bp_dtheme_enqueue_styles() {
 	// Bump this when changes are made to bust cache
-	$version = '20110818';
+	$version = '20111003';
 	// Register our main stylesheet
 		wp_enqueue_style( 'bp-default-main', get_template_directory_uri() . '/_inc/css/default.css', array(), $version );
 	// Main CSS
@@ -73,12 +73,12 @@ add_action( 'wp_print_styles', 'bp_dtheme_enqueue_styles' );
 // Add color choice CSS from theme options. 
 add_action('wp_print_styles', 'frisco_add_colorcss');
 function frisco_add_colorcss() {
-	// If theme options are saved in the database
+	// If theme options are not saved in the database
 	if( !get_option( 'frisco_theme_options' ) ) { 
-		// Load stylesheet for color choice
+		// Load default color stylesheet
 		wp_register_style('frisco-color-css', get_stylesheet_directory_uri() . '/css/default.css');
 	} else {
-		// If not, load default color stylesheet
+		// Load stylesheet for color choice
 		$options = get_option('frisco_theme_options');
 		wp_register_style('frisco-color-css', get_stylesheet_directory_uri() . '/css/' . $options['themecolor'] . '.css');
 	}
@@ -171,7 +171,7 @@ function frisco_div_bp_after_header() {
 }
 add_action ( 'bp_after_header', 'frisco_div_bp_after_header' );
 
-// This could have gone in div_bp_after_header, but we might want to add something later.
+// Adding full width backgrounds requires some extra divs.
 function frisco_div_bp_before_container() {
 	?>
 		<div id="bp-before-container" class="fullwidth">
@@ -187,7 +187,7 @@ function frisco_div_bp_after_container() {
 }
 add_action ( 'bp_after_container', 'frisco_div_bp_after_container' );
 
-// Batten down the hatches, we're going full-width
+// Adding full width backgrounds requires some extra divs.
 function frisco_div_bp_before_footer() {
 	?>
 		<div id="bp-before-footer" class="fullwidth">
@@ -204,7 +204,7 @@ function frisco_div_bp_after_footer() {
 add_action ( 'bp_after_footer', 'frisco_div_bp_after_footer' );
 
 
-// Batten down the hatches, we're going full-width
+// Adding full width backgrounds requires some extra divs.
 function frisco_div_bp_before_activity_post_form() {
 	?>
 		<div id="bp-before-activity-post-form">
@@ -220,7 +220,7 @@ function frisco_div_bp_after_activity_post_form() {
 }
 add_action ( 'bp_after_activity_post_form', 'frisco_div_bp_after_activity_post_form' );
 
-// Batten down the hatches, we're going full-width
+// Adding full width backgrounds requires some extra divs.
 function frisco_div_bp_before_member_header() {
 	?>
 		<div id="bp-before-member-header">
@@ -237,7 +237,7 @@ function frisco_div_bp_after_member_header() {
 add_action ( 'bp_after_member_header', 'frisco_div_bp_after_member_header' );
 
 
-// Batten down the hatches, we're going full-width
+// Adding full width backgrounds requires some extra divs.
 function frisco_div_bp_before_group_header() {
 	?>
 		<div id="bp-before-group-header">

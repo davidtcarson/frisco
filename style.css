@@ -2,7 +2,7 @@
  * Theme Name: Frisco for BuddyPress
  * Theme URI: http://friscotheme.com
  * Description: Derived almost entirely from the BuddyPress Default theme, Frisco for BuddyPress adds some minor HTML changes and a fresh coat of CSS. There is some responsivenss built-in to the theme, and this will be improved in future versions.
- * Version: 1.5.02
+ * Version: 1.5.04
  * Author: David Carson
  * Author URI: http://davidtcarson.com
  * License: GNU General Public License v2.0
@@ -34,8 +34,10 @@ body#bp-default #wp-admin-bar .padder {
 	min-width: 960px;
 	margin: 0 auto;
 	clear:both; 
-	background: #EAEAEA;
     float: left;
+}
+.fullwidth {
+	background: #EAEAEA;
 }
 body,
 h1,
