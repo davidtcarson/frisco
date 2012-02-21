@@ -50,8 +50,8 @@ div.item-list-tabs ul li a:hover span {
 	background: -ms-linear-gradient(top, #8A4400 0%,#A35100 100%); /* IE10+ */
 	filter: none; /* IE6-9 */
 	background: linear-gradient(top, #8A4400 0%,#A35100  100%); /* W3C */
- 	border-color: #A35100 #054664 #A35100 #A35100;
-    border-right: 1px solid #054664;
+ 	border-color: #A35100 #A35100 #A35100 #A35100;
+    border-right: 1px solid #A35100;
     color: #FFF;
 	text-shadow: 0 1px 0 #000; 	
 }
@@ -66,4 +66,21 @@ form#whats-new-form textarea:focus {
 #whats-new:focus {
     border-color: #FFC48A !important;
     outline-color: #FFC48A;
+}
+#wpadminbar .quicklinks li#wp-admin-bar-bp-notifications #ab-pending-notifications.alert,
+#wpadminbar .quicklinks li#wp-admin-bar-my-account a span.count,
+#wpadminbar .quicklinks li#wp-admin-bar-my-account-with-avatar a span.count {
+    background-color: #FF9D3E;
+}
+#wpadminbar .quicklinks .menupop ul li a,
+#wpadminbar .quicklinks .menupop ul li a strong, 
+#wpadminbar .quicklinks .menupop.hover ul li a,
+#wpadminbar.nojs .quicklinks .menupop:hover ul li a {
+    color: #D16700;
+}
+#wpadminbar .menupop li:hover, 
+#wpadminbar .menupop li.hover,
+#wpadminbar .quicklinks .menupop .ab-item:focus,
+#wpadminbar .quicklinks .ab-top-menu .menupop .ab-item:focus {
+    background-color: #fae7d5;
 }

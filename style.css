@@ -1,14 +1,14 @@
 /**
  * Theme Name: Frisco for BuddyPress
  * Theme URI: http://friscotheme.com
- * Description: Derived almost entirely from the BuddyPress Default theme, Frisco for BuddyPress adds some minor HTML changes and a fresh coat of CSS. There is some responsivenss built-in to the theme, and this will be improved in future versions.
- * Version: 1.5.04
+ * Description: Derived almost entirely from the BuddyPress Default theme, Frisco for BuddyPress adds some minor HTML changes and a fresh coat of CSS.
+ * Version: 1.6
  * Author: David Carson
  * Author URI: http://davidtcarson.com
  * License: GNU General Public License v2.0
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Template: bp-default
- * Template Version: 1.5
+ * Template Version: 1.6
  * Tags: buddypress
 */
 
@@ -307,11 +307,11 @@ a.bp-primary-action,
 div.activity-meta a.acomment-reply {
 	background: #fff9DB;
 	border-bottom: none;
-	color: #FFA200;
+	color: #E49102;
 	border: none;
 }
-div.activity-meta a.acomment-reply:hover,
-.activity-comments a.acomment-reply:hover, {
+body div.activity-meta a.acomment-reply:hover,
+body .activity-comments a.acomment-reply:hover {
 	background: #FFA200;
 	color: #FFF;
 }
@@ -479,7 +479,7 @@ div#subnav.item-list-tabs {
 	vertical-align: middle;
 	white-space: nowrap;
 	font-weight: bold;
-	border-radius: 0; 
+	border-radius: 0;  
 }
 #nav li:first-child a {
     -moz-border-radius:2px 0 0 2px;
@@ -1139,7 +1139,68 @@ body.search-no-results h2.pagetitle {
 body.activity div#message.updated {
 	display: none; 
 }
+#wp-admin-bar-user-info .avatar {
+	max-height: 64px; 
+	max-width: 64px; 
+}
+a.bp-secondary-action, 
+span.highlight {
+    background: #EEE;
+    color: #555;
+	padding: 2px 5px;
+}
+.acomment-reply.bp-primary-action {
+	padding: 2px 5px;
+}
+#nav .sfhover ul li, 
+#nav *:hover ul li {
+    padding: 0;
+}
+#nav .sfhover ul li a,
+#nav *:hover ul li a {
+    padding: 0 5%;
+    width: 90%; 
+}
+.group-members #member-list h5 { 
+	line-height: 1.3em; 
+}
+div#sidebar div.item-options {
+    margin: -10px 0 0 0;
+}
+#wp-admin-bar-header {
+	display: none; 
+}
+.group-admin #members-list a.button {
+	font-size: 12px; 
+}
+body div#message.frisco_notice p {
+	text-align: left; 
+	margin-bottom: 1em; 
+	margin-top: 0; 
+	background-color: #FCF8E3;
+    border: 1px solid #FBEED5;
+    border-radius: 4px 4px 4px 4px;
+    margin-bottom: 18px;
+    padding: 8px 35px 8px 14px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    color: #C09853;
+}
 
+body div.frisco_notice p a#close-notice {
+    color: #000000;
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 18px;
+    position: relative;
+    top: -2px;
+    right: -20px; 
+    opacity: 0.2;
+    text-shadow: 0 1px 0 #FFFFFF;
+}
+#sidebar #message.notice {
+ 	display: none; 
+}
 /*--------------------------------------------------------------
 The media queries below were taken from Less Framework (http://lessframework.com/). 
 --------------------------------------------------------------*/
