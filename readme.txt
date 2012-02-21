@@ -1,3 +1,5 @@
+**DO NOT USE ON LIVE SITE. Use on development site with more recent trunk version of BuddyPress 1.6.**
+
 --- Frisco ---
 A clean and simple child theme for BuddyPress 1.6+. Frisco uses the BuddyPress default theme as its parent theme. BuddyPress must be active for Frisco to function.  
 
