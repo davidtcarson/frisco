@@ -1,9 +1,10 @@
 <?php
 
 add_action( 'admin_init', 'theme_options_init' );
-add_action( 'admin_menu', 'theme_options_add_page' );
+// add_action( 'admin_menu', 'theme_options_add_page' );
+if ( current_user_can( 'edit_theme_options' ) ) {
 add_action( 'admin_bar_menu', 'theme_options_nav' );
-
+}
 /**
  * Init plugin options to white list our options
  */
@@ -11,24 +12,96 @@ function theme_options_init(){
 	register_setting( 'frisco_options', 'frisco_theme_options', 'theme_options_validate' );
 }
 
-/**
- * Load up the menu page
- */
-function theme_options_add_page() {
-	add_theme_page( __( 'Theme Options', 'friscotheme' ), __( 'Theme Options', 'friscotheme' ), 'edit_theme_options', 'theme_options', 'theme_options_do_page' );
+
+function frisco_theme_options_add_page() {
+	$theme_page = add_theme_page(
+		__( 'Theme Options', 'friscotheme' ),   // Name of page
+		__( 'Theme Options', 'friscotheme' ),   // Label in menu
+		'edit_theme_options',                   // Capability required
+		'theme_options',                        // Menu slug, used to uniquely identify the page
+		'frisco_theme_options_render_page' 		// Function that renders the options page
+	);
+
+	if ( ! $theme_page )
+		return;
+
+	add_action( "load-$theme_page", 'frisco_theme_options_help' );
+}
+add_action( 'admin_menu', 'frisco_theme_options_add_page' );
+
+function frisco_theme_options_help() {
+
+	$help = '<p>' . __( 'Some themes provide customization options that are grouped together on a Theme Options screen. If you change themes, options may change or disappear, as they are theme-specific. Your current theme, <strong>Frisco for BuddyPress</strong>, provides the following Theme Options:', 'friscotheme' ) . '</p>' .
+			'<ol>' .
+				'<li>' . __( '<strong>Theme Color</strong>: You can choose from several colors or use a custom stylesheet to create your own.', 'friscotheme' ) . '</li>' .
+				'<li>' . __( '<strong>Google Font</strong>: You can choose a Google Web Font for your site title with just a couple clicks.', 'friscotheme' ) . '</li>' .
+				'<li>' . __( '<strong>Custom Stylesheet</strong>: If you need to customize the stylesheet (ex. change fonts, colors, etc.), create a file called <code>custom.css</code> and simply check the box to load that stylesheet. This will make your life much easier when you upgrade the theme down the road because your changes will not be overriden.', 'friscotheme' ) . '</li>' .
+				'<li>' . __( '<strong>Custom Functions</strong>: Similar to the Custom Stylesheet option, you can load your own functions file instead of editing the main functions file. Create a file called <code>functions-custom.php</code> and check the option. Your custom functions file will not be overriden when upgrading the theme.', 'friscotheme' ) . '</li>' .
+			'</ol>' .
+			'<p>' . __( 'Remember to click "Save Changes" to save any changes you have made to the theme options.', 'friscotheme' ) . '</p>';
+			
+			
+	$tips = '<p>' . __( '<strong>USE WIDGETS:</strong> This theme uses the same sidebar and footer widgets available to the BuddyPress default theme. <a href="widgets.php">Use them!</a> If you want to show different widgets on different pages, use the <a href="http://wordpress.org/extend/plugins/widget-logic/">Widget Logic Plugin</a> (<a href="plugin-install.php?tab=search&type=term&s=widget+logic&plugin-search-input=Search+Plugins">link to install</a>) along with some <a href="http://codex.wordpress.org/Conditional_Tags">WordPress conditional tags</a> or <a href="http://codex.buddypress.org/developer-docs/conditional-template-tags/">BuddyPress conditional tags</a>.', 'friscotheme' ) . '</p>' .
+	 '<p>' . __( '<p><strong>GET SUPPORT:</strong> This theme is free and support is not included. But, if you get stuck or if you have any questions, start a new thread in the <a href="http://wordpress.org/support/forum/themes-and-templates">WordPress theme forums</a> or the <a href="http://buddypress.org/community/groups/creating-extending/forum/">BuddyPress theme forums</a>. <em>IMPORTANT:</em> If you post in the WordPress or BuddyPress forums, make sure you add the tag "Frisco" or "Frisco Theme" to the post. This will make it easier for the theme author to become aware of your issue.</p>', 'friscotheme' ) . '</p>' ;
+
+	$frisco_plus = '<p>' . __( '<strong>Get more features and priority support!</strong> Due to the popularity of the free version of the Frisco theme, we put together a "<a href="friscotheme.com/plus">Plus</a>" version of the Frisco theme for BuddyPress users who want more features and professional support.</p>', 'friscotheme' ) . '</p>' .
+			'<ol>' .
+				'<li>' . __( '<strong>Custom Logo</strong>: The most requested feature for the theme, Frisco+ allows you to add a custom logo to replace the site title.', 'friscotheme' ) . '</li>' .
+				'<li>' . __( '<strong>Branded Login</strong>: No matter how hard you try or which plugins you use, the WordPress default login page is not fun to style. The Frisco+ theme automatically styles the WordPress login page so that your color, font, and logo options from the theme are consistent.', 'friscotheme' ) . '</li>' .
+				'<li>' . __( '<strong>Lockdown</strong>: If you are creating a private community, the "Lockdown" option in Frisco+ will force all non-logged in visitors to be redirected to the registration page. This includes regular visitors and search engines. With one click, your site is private. If your site is more complicated and requires extra customization, priority support is available to Frisco+ users.', 'friscotheme' ) . '</li>' .
+				'<li>' . __( '<strong>Better Plugin Support</strong>: Some plugin authors, for one reason or another, will include their own template files when creating a plugin instead of using the plugin files included with the theme. These plugins might "break" your layout on the pages where the custom templates are used, so Frisco+ users have access to customized template files for some popular plugins that can be dropped into the plugin and fix layout issues. If a template file is not available for a particular plugin, Frisco+ users can get priority support to fix the issue quickly.', 'friscotheme' ) . '</li>' .
+			'</ol>' .
+	 '<p>' . __( '<p><strong>How do you get Frisco+?</strong> <a href="friscotheme.com/plus">Go to the Frisco+ page</a> and drop your email in the box to be notified once Frisco+ is available. Frisco+ should be available within hours or days of BuddyPress 1.6 being released.</p>', 'friscotheme' ) . '</p>' ;
+			
+	$sidebar = '<p><strong>' . __( 'For more information:', 'friscotheme' ) . '</strong></p>' .
+		'<p>' . __( '<a href="http://friscotheme.com" target="_blank">Frisco Theme Website</a>', 'friscotheme' ) . '</p>' .
+		'<p>' . __( '<a href="http://wordpress.org/tags/frisco-for-buddypress" target="_blank">Free Support Forums</a>', 'friscotheme' ) . '</p>' .
+		'<p>' . __( '<a href="http://friscotheme.com/plus" target="_blank">Priority Support Forums</a>', 'friscotheme' ) . '</p>' .
+		'<p>' . __( '<a href="http://friscotheme.com/plus" target="_blank">Frisco+</a>', 'friscotheme' ) . '</p>';
+
+	$screen = get_current_screen();
+
+	if ( method_exists( $screen, 'add_help_tab' ) ) {
+		// WordPress 3.3
+		$screen->add_help_tab( array(
+			'title' => __( 'Overview', 'friscotheme' ),
+			'id' => 'theme-options-help-overview',
+			'content' => $help,
+			)
+		);
+		$screen->add_help_tab( array(
+			'title' => __( 'Tips', 'friscotheme' ),
+			'id' => 'theme-options-help-more',
+			'content' => $tips,
+			)
+		);
+		$screen->add_help_tab( array(
+			'title' => __( 'Frisco+', 'friscotheme' ),
+			'id' => 'theme-options-frisco-plus',
+			'content' => $frisco_plus,
+			)
+		);
+
+		$screen->set_help_sidebar( $sidebar );
+	} else {
+		// WordPress 3.2
+		add_contextual_help( $screen, $help . $sidebar );
+	}
 }
 
 
-function theme_options_nav() {
- global $wp_admin_bar;
- $wp_admin_bar->add_menu( array(
- 'parent' => 'appearance',
- 'id' => 'theme-options',
- 'title' => 'Theme Options',
- 'href' => admin_url('themes.php?page=theme_options')
- ) );
+// Add theme options navigation to admin bar. 
+if ( current_user_can( 'edit_theme_options' ) ) {
+	function theme_options_nav() {
+	 global $wp_admin_bar;
+	 $wp_admin_bar->add_menu( array(
+	 'parent' => 'appearance',
+	 'id' => 'theme-options',
+	 'title' => 'Theme Options',
+	 'href' => admin_url('themes.php?page=theme_options')
+	 ) );
+	}
 }
-
 
 /**
  * Create arrays for our select and radio options
@@ -121,7 +194,7 @@ $select_font_options = array(
 /**
  * Create the options page
  */
-function theme_options_do_page() {
+function frisco_theme_options_render_page() {
 	global $select_options, $radio_options, $select_font_options;
 
 	if ( ! isset( $_REQUEST['settings-updated'] ) )
@@ -129,7 +202,12 @@ function theme_options_do_page() {
 
 	?>
 	<div class="wrap">
-		<?php screen_icon(); echo "<h2>" . get_current_theme() . __( ' Theme Options', 'friscotheme' ) . "</h2>"; ?>
+		<?php screen_icon(); ?>
+		
+		<h2>
+			<?php _e('Frisco Theme Options', 'friscotheme' ); ?>	
+		</h2>
+		
 
 		<?php if ( false !== $_REQUEST['settings-updated'] ) : ?>
 		<div class="updated fade"><p><strong><?php _e( 'Options saved', 'friscotheme' ); ?></strong></p></div>
@@ -141,14 +219,12 @@ function theme_options_do_page() {
 
 			<table class="form-table">
 
-			
-			
 				<?php
 				/**
 				 * Color Choices
 				 */
 				?>
-				<tr valign="top"><th scope="row"><?php _e( 'Select Theme Color', 'friscotheme' ); ?></th>
+				<tr valign="top" class="frisco-odd"><th scope="row"><?php _e( 'Select Theme Color', 'friscotheme' ); ?></th>
 					<td>
 						<select name="frisco_theme_options[themecolor]">
 							<?php
@@ -166,7 +242,7 @@ function theme_options_do_page() {
 								echo $p . $r;
 							?>
 						</select>
-						<label class="description" for="frisco_theme_options[themecolor]"><?php _e( 'Only a few color choices at the moment.', 'friscotheme' ); ?></label>
+						<label class="description" for="frisco_theme_options[themecolor]"><?php _e( 'Choose a color scheme for your website.', 'friscotheme' ); ?></label>
 					</td>
 				</tr>
 
@@ -202,7 +278,7 @@ function theme_options_do_page() {
 				 * Use custom.css? 
 				 */
 				?>
-				<tr valign="top"><th scope="row"><?php _e( 'Custom Stylesheet', 'friscotheme' ); ?></th>
+				<tr valign="top" class="frisco-odd"><th scope="row"><?php _e( 'Custom Stylesheet', 'friscotheme' ); ?></th>
 					<td>
 						<input id="frisco_theme_options[customcss]" name="frisco_theme_options[customcss]" type="checkbox" value="1" <?php checked( '1', $options['customcss'] ); ?> />
 						<label class="description" for="frisco_theme_options[customcss]"><?php _e( 'Check this box to use a custom stylesheet. Create <code>custom.css</code> in the main theme directory.', 'friscotheme' ); ?></label>
@@ -226,13 +302,6 @@ function theme_options_do_page() {
 				<input type="submit" class="button-primary" value="<?php _e( 'Save Options', 'friscotheme' ); ?>" />
 			</p>
 		</form>
-		
-		<h3>Tips</h3>
-		<p><strong>&#42;USE THE NEW ADMIN BAR:</strong> By default, BuddyPress is using the "BuddyBar". If you'd prefer to use the new admin bar, add <code>define('BP_USE_WP_ADMIN_BAR', true);</code> to your <code>wp-config.php</code> file just above where it says "That's all, stop editing! Happy blogging."</p>
-		<p><strong>&#42;USE WIDGETS:</strong> This theme uses the same sidebar and footer widgets available to the BuddyPress default theme. <a href="<?php echo home_url(); ?>/wp-admin/widgets.php">Use them!</a> If you want to show different widgets on different pages, use the <a href="http://wordpress.org/extend/plugins/widget-logic/">Widget Logic Plugin</a> (<a href="<?php echo home_url(); ?>/wp-admin/plugin-install.php?tab=search&type=term&s=widget+logic&plugin-search-input=Search+Plugins">link to install</a>) along with some <a href="http://codex.wordpress.org/Conditional_Tags">WordPress conditional tags</a> or <a href="http://codex.buddypress.org/developer-docs/conditional-template-tags/">BuddyPress conditional tags</a>.</p>
-		<p><strong>&#42;GET SUPPORT:</strong> This theme is free and support is not included. But, if you get stuck or if you have any questions, start a new thread in the <a href="http://wordpress.org/support/forum/themes-and-templates">WordPress theme forums</a> or the <a href="http://buddypress.org/community/groups/creating-extending/forum/">BuddyPress theme forums</a>. <em>IMPORTANT:</em> If you post in the WordPress or BuddyPress forums, make sure you add the tag "Frisco" or "Frisco Theme" to the post. This will make it easier for the theme author to become aware of your issue.</p>
-		
-		
 	</div>
 	<?php
 }
@@ -265,3 +334,5 @@ function theme_options_validate( $input ) {
 }
 
 // adapted from http://planetozh.com/blog/2009/05/handling-plugins-options-in-wordpress-28-with-register_setting/
+
+
