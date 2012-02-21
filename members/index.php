@@ -1,7 +1,10 @@
 <?php
 
 /**
- * This template file is only temporary. There weren't any hook options on this particular index file so I've added a single line to the file, momentarily. See line 26. 
+ * BuddyPress - Members Directory
+ *
+ * @package BuddyPress
+ * @subpackage bp-default
  */
 
 ?>
@@ -13,17 +16,20 @@
 	<div id="content">
 		<div class="padder">
 
+		<?php do_action( 'bp_before_directory_members' ); ?>
+
 		<form action="" method="post" id="members-directory-form" class="dir-form">
 
 			<h3><?php _e( 'Members Directory', 'buddypress' ); ?></h3>
+
+			<?php do_action( 'bp_before_directory_members_content' ); ?>
 
 			<div id="members-dir-search" class="dir-search" role="search">
 
 				<?php bp_directory_members_search_form(); ?>
 
 			</div><!-- #members-dir-search -->
-			
-		</form><!-- this is the one line -->
+
 			<div class="item-list-tabs" role="navigation">
 				<ul>
 					<li class="selected" id="members-all"><a href="<?php echo trailingslashit( bp_get_root_domain() . '/' . bp_get_members_root_slug() ); ?>"><?php printf( __( 'All Members <span>%s</span>', 'buddypress' ), bp_get_total_member_count() ); ?></a></li>
@@ -82,6 +88,8 @@
 			<?php wp_nonce_field( 'directory_members', '_wpnonce-member-filter' ); ?>
 
 		</form><!-- #members-directory-form -->
+		
+		<?php do_action( 'bp_after_directory_members' ); ?>
 
 		</div><!-- .padder -->
 	</div><!-- #content -->

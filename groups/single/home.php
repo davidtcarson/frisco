@@ -5,7 +5,7 @@
 
 			<?php if ( bp_has_groups() ) : while ( bp_groups() ) : bp_the_group(); ?>
 
-			<?php do_action( 'bp_before_group_home_content' ) ?>
+			<?php do_action( 'bp_before_group_home_content' ); ?>
 
 			<div id="item-header" role="complementary">
 
@@ -41,7 +41,7 @@
 				elseif ( bp_is_group_invites() && bp_group_is_visible() ) :
 					locate_template( array( 'groups/single/send-invites.php' ), true );
 
-					elseif ( bp_is_group_forum() && bp_group_is_visible() && bp_is_active( 'forums' ) && bp_forums_is_installed_correctly() ) : 
+					elseif ( bp_is_group_forum() && bp_group_is_visible() && bp_is_active( 'forums' ) && bp_forums_is_installed_correctly() ) :
 						locate_template( array( 'groups/single/forum.php' ), true );
 
 				elseif ( bp_is_group_membership_request() ) :

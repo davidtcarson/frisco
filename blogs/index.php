@@ -32,11 +32,11 @@
 
 			<div class="item-list-tabs" role="navigation">
 				<ul>
-					<li class="selected" id="blogs-all"><a href="<?php bp_root_domain(); ?>"><?php printf( __( 'All Sites <span>%s</span>', 'buddypress' ), bp_get_total_blog_count() ); ?></a></li>
-
+					<li class="selected" id="blogs-all"><a href="<?php bp_root_domain(); ?>/<?php bp_blogs_root_slug(); ?>"><?php printf( __( 'All Sites <span>%s</span>', 'buddypress' ), bp_get_total_blog_count() ); ?></a></li>
+					
 					<?php if ( is_user_logged_in() && bp_get_total_blog_count_for_user( bp_loggedin_user_id() ) ) : ?>
 
-						<li id="blogs-personal"><a href="<?php echo bp_loggedin_user_domain() . bp_get_blogs_slug() . '/my-blogs/' ?>"><?php printf( __( 'My Sites <span>%s</span>', 'buddypress' ), bp_get_total_blog_count_for_user( bp_loggedin_user_id() ) ); ?></a></li>
+						<li id="blogs-personal"><a href="<?php echo bp_loggedin_user_domain() . bp_get_blogs_slug(); ?>"><?php printf( __( 'My Sites <span>%s</span>', 'buddypress' ), bp_get_total_blog_count_for_user( bp_loggedin_user_id() ) ); ?></a></li>
 
 					<?php endif; ?>
 
@@ -80,7 +80,7 @@
 			
 			<?php do_action( 'bp_after_directory_blogs_content' ); ?>
 
-</div><!-- #main-column -->
+	</div><!-- #main-column -->
 	<?php get_sidebar( 'buddypress' ); ?>
 </div><!-- #sidebar-squeeze -->
 
