@@ -33,7 +33,7 @@
 
 			<?php do_action( 'bp_before_topics' ); ?>
 
-			<form action="" method="post" id="forums-directory-form" class="dir-form">
+			<div class="dir-form">
 
 				<div class="item-list-tabs" role="navigation">
 					<ul>
@@ -52,7 +52,7 @@
 
 <div id="sidebar-squeeze">			
 	<div id="main-column">
-	
+		<form action="" method="post" id="forums-directory-form" class="dir-form">
 				<div class="item-list-tabs" id="subnav" role="navigation">
 					<ul>
 
@@ -161,7 +161,7 @@
 	</div><!-- #main-column -->
 		<?php get_sidebar( 'buddypress' ); ?>
 </div><!-- #sidebar-squeeze -->
-
+</div><!-- .dir-form -->
 		</div><!-- .padder -->
 	</div><!-- #content -->
 
