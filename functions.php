@@ -364,6 +364,19 @@ function frisco_bp_message_get_notices() {
 	}
 }
 
+if ( !function_exists( 'bp_get_version' ) ) :
+/**
+ * If bp_get_version does not exist, create it. 
+ *
+ * @since BuddyPress (1.6)
+ * @uses bp_get_version() To get the BuddyPress version
+ * @including this blank conditional function allows Frisco v1.6 to work with BuddyPress 1.5
+ */
+function bp_get_version() {
+	// Intentionally Blank
+}
+endif;
+
 /**
  * Include plus.php template if included in theme.  
  * If the theme contains no plus.php file then no template will be included.
