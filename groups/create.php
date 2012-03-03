@@ -9,6 +9,17 @@
 
 ?>
 
+<?php
+
+/**
+ * BuddyPress - Create Group
+ *
+ * @package BuddyPress
+ * @subpackage bp-default
+ */
+
+?>
+
 <?php get_header( 'buddypress' ); ?>
 
 	<div id="content">
@@ -30,10 +41,10 @@
 			</div>
 
 			<?php do_action( 'template_notices' ); ?>
-			
+
 <div id="sidebar-squeeze">			
 	<div id="main-column">
-
+	
 			<div class="item-body" id="group-create-body">
 
 				<?php /* Group creation step 1: Basic group details */ ?>
@@ -59,26 +70,6 @@
 				<?php if ( bp_is_group_creation_step( 'group-settings' ) ) : ?>
 
 					<?php do_action( 'bp_before_group_settings_creation_step' ); ?>
-
-					<?php if ( bp_is_active( 'forums' ) ) : ?>
-						<?php if ( bp_forums_is_installed_correctly() ) : ?>
-
-							<div class="checkbox">
-								<label><input type="checkbox" name="group-show-forum" id="group-show-forum" value="1"<?php checked( bp_get_new_group_enable_forum(), true, true ); ?> /> <?php _e( 'Enable discussion forum', 'buddypress' ); ?></label>
-							</div>
-
-						<?php else : ?>
-							<?php if ( bp_current_user_can( 'bp_moderate' ) ) : ?>
-
-								<div class="checkbox">
-									<label><input type="checkbox" disabled="disabled" name="disabled" id="disabled" value="0" /> <?php printf( __( '<strong>Attention Site Admin:</strong> Group forums require the <a href="%s">correct setup and configuration</a> of a bbPress installation.', 'buddypress' ), bp_get_root_domain() . '/wp-admin/admin.php?page=bb-forums-setup' ); ?></label>
-								</div>
-
-							<?php endif; ?>
-						<?php endif; ?>
-					<?php endif; ?>
-
-					<hr />
 
 					<h4><?php _e( 'Privacy Options', 'buddypress' ); ?></h4>
 
@@ -111,30 +102,38 @@
 						</label>
 					</div>
 
-					<hr />
-
 					<h4><?php _e( 'Group Invitations', 'buddypress' ); ?></h4>
 
 					<p><?php _e( 'Which members of this group are allowed to invite others?', 'buddypress' ); ?></p>
 
 					<div class="radio">
 						<label>
-							<input type="radio" name="group-invite-status" value="members"<?php bp_group_show_invite_status_setting( 'members' ) ?> />
+							<input type="radio" name="group-invite-status" value="members"<?php bp_group_show_invite_status_setting( 'members' ); ?> />
 							<strong><?php _e( 'All group members', 'buddypress' ); ?></strong>
 						</label>
 
 						<label>
-							<input type="radio" name="group-invite-status" value="mods"<?php bp_group_show_invite_status_setting( 'mods' ) ?> />
+							<input type="radio" name="group-invite-status" value="mods"<?php bp_group_show_invite_status_setting( 'mods' ); ?> />
 							<strong><?php _e( 'Group admins and mods only', 'buddypress' ); ?></strong>
 						</label>
 
 						<label>
-							<input type="radio" name="group-invite-status" value="admins"<?php bp_group_show_invite_status_setting( 'admins' ) ?> />
+							<input type="radio" name="group-invite-status" value="admins"<?php bp_group_show_invite_status_setting( 'admins' ); ?> />
 							<strong><?php _e( 'Group admins only', 'buddypress' ); ?></strong>
 						</label>
 					</div>
 
-					<hr />
+					<?php if ( bp_is_active( 'forums' ) && bp_forums_is_installed_correctly() ) : ?>
+
+						<h4><?php _e( 'Group Forums', 'buddypress' ); ?></h4>
+
+						<p><?php _e( 'Should this group have a forum?', 'buddypress' ); ?></p>
+
+						<div class="checkbox">
+							<label><input type="checkbox" name="group-show-forum" id="group-show-forum" value="1"<?php checked( bp_get_new_group_enable_forum(), true, true ); ?> /> <?php _e( 'Enable discussion forum', 'buddypress' ); ?></label>
+						</div>
+
+					<?php endif; ?>
 
 					<?php do_action( 'bp_after_group_settings_creation_step' ); ?>
 

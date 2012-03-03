@@ -1201,18 +1201,14 @@ body div.frisco_notice p a#close-notice {
 #sidebar #message.notice {
  	display: none; 
 }
+.group-create #group-create-body h4 {
+	margin-top: 1em; 
+}
 /*--------------------------------------------------------------
-The media queries below were taken from Less Framework (http://lessframework.com/). 
+Media Queries 
 --------------------------------------------------------------*/
 
-/*		Tablet Layout: 768px.
-		Gutters: 24px.
-		Outer margins: 28px.
-		Inherits styles from: Default Layout.
------------------------------------------------------------------
-cols    1     2      3      4      5      6      7      8
-px      68    160    252    344    436    528    620    712    */
-
+/* Tablet */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
 	
 	body {
@@ -1223,14 +1219,7 @@ px      68    160    252    344    436    528    620    712    */
 	}
 }
 
-/*		Mobile Layout: 320px.
-		Gutters: 24px.
-		Outer margins: 34px.
-		Inherits styles from: Default Layout.
----------------------------------------------
-cols    1     2      3
-px      68    160    252    */
-
+/* Mobile */
 @media only screen and (max-width: 767px) {
 	
 	body {
@@ -1478,16 +1467,10 @@ px      68    160    252    */
     	left: -80px;
     	right: auto;
 	}
+
 }
 
-/*		Wide Mobile Layout: 480px.
-		Gutters: 24px.
-		Outer margins: 22px.
-		Inherits styles from: Default Layout, Mobile Layout.
-------------------------------------------------------------
-cols    1     2      3      4      5
-px      68    160    252    344    436    */
-
+/* Wide Mobile Layout */
 @media only screen and (min-width: 480px) and (max-width: 767px) {
 	
 	body {
