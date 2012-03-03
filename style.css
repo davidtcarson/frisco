@@ -1461,6 +1461,23 @@ px      68    160    252    */
     	margin: 25px -19px 10px -18px !important; 
     	float: none; 
     }
+    .logged-in #wp-admin-bar-root-default,
+    .logged-in #wpadminbar #adminbarsearch, 
+    .logged-in .ab-sub-secondary .ab-sub-wrapper {
+		position: absolute !important;
+   		top: -9999px !important;
+   		left: -9999px !important;
+    }
+    .logged-in #wpadminbar {
+    	min-width: 0; 
+    }
+    .logged-in #wpadminbar .ab-top-secondary .menupop .menupop > .ab-item {
+    	background-image: none; 
+    }
+    .logged-in #wpadminbar .ab-top-secondary #wp-admin-bar-bp-notifications .ab-sub-wrapper {
+    	left: -80px;
+    	right: auto;
+	}
 }
 
 /*		Wide Mobile Layout: 480px.
