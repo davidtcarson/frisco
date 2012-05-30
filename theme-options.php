@@ -44,20 +44,10 @@ function frisco_theme_options_help() {
 	$tips = '<p>' . __( '<strong>USE WIDGETS:</strong> This theme uses the same sidebar and footer widgets available to the BuddyPress default theme. <a href="widgets.php">Use them!</a> If you want to show different widgets on different pages, use the <a href="http://wordpress.org/extend/plugins/widget-logic/">Widget Logic Plugin</a> (<a href="plugin-install.php?tab=search&type=term&s=widget+logic&plugin-search-input=Search+Plugins">link to install</a>) along with some <a href="http://codex.wordpress.org/Conditional_Tags">WordPress conditional tags</a> or <a href="http://codex.buddypress.org/developer-docs/conditional-template-tags/">BuddyPress conditional tags</a>.', 'friscotheme' ) . '</p>' .
 	 '<p>' . __( '<p><strong>GET SUPPORT:</strong> This theme is free and support is not included. But, if you get stuck or if you have any questions, start a new thread in the <a href="http://wordpress.org/support/forum/themes-and-templates">WordPress theme forums</a> or the <a href="http://buddypress.org/community/groups/creating-extending/forum/">BuddyPress theme forums</a>. <em>IMPORTANT:</em> If you post in the WordPress or BuddyPress forums, make sure you add the tag "Frisco" or "Frisco Theme" to the post. This will make it easier for the theme author to become aware of your issue.</p>', 'friscotheme' ) . '</p>' ;
 
-	$frisco_plus = '<p>' . __( '<strong>Get more features and priority support!</strong> Due to the popularity of the free version of the Frisco theme, we put together a "<a href="friscotheme.com/plus">Plus</a>" version of the Frisco theme for BuddyPress users who want more features and professional support.</p>', 'friscotheme' ) . '</p>' .
-			'<ol>' .
-				'<li>' . __( '<strong>Custom Logo</strong>: The most requested feature for the theme, Frisco+ allows you to add a custom logo to replace the site title.', 'friscotheme' ) . '</li>' .
-				'<li>' . __( '<strong>Branded Login</strong>: No matter how hard you try or which plugins you use, the WordPress default login page is not fun to style. The Frisco+ theme automatically styles the WordPress login page so that your color, font, and logo options from the theme are consistent.', 'friscotheme' ) . '</li>' .
-				'<li>' . __( '<strong>Lockdown</strong>: If you are creating a private community, the "Lockdown" option in Frisco+ will force all non-logged in visitors to be redirected to the registration page. This includes regular visitors and search engines. With one click, your site is private. If your site is more complicated and requires extra customization, priority support is available to Frisco+ users.', 'friscotheme' ) . '</li>' .
-				'<li>' . __( '<strong>Better Plugin Support</strong>: Some plugin authors, for one reason or another, will include their own template files when creating a plugin instead of using the plugin files included with the theme. These plugins might "break" your layout on the pages where the custom templates are used, so Frisco+ users have access to customized template files for some popular plugins that can be dropped into the plugin and fix layout issues. If a template file is not available for a particular plugin, Frisco+ users can get priority support to fix the issue quickly.', 'friscotheme' ) . '</li>' .
-			'</ol>' .
-	 '<p>' . __( '<p><strong>How do you get Frisco+?</strong> <a href="friscotheme.com/plus">Go to the Frisco+ page</a> and drop your email in the box to be notified once Frisco+ is available. Frisco+ should be available within hours or days of BuddyPress 1.6 being released.</p>', 'friscotheme' ) . '</p>' ;
 			
 	$sidebar = '<p><strong>' . __( 'For more information:', 'friscotheme' ) . '</strong></p>' .
 		'<p>' . __( '<a href="http://friscotheme.com" target="_blank">Frisco Theme Website</a>', 'friscotheme' ) . '</p>' .
-		'<p>' . __( '<a href="http://wordpress.org/tags/frisco-for-buddypress" target="_blank">Free Support Forums</a>', 'friscotheme' ) . '</p>' .
-		'<p>' . __( '<a href="http://friscotheme.com/plus" target="_blank">Priority Support Forums</a>', 'friscotheme' ) . '</p>' .
-		'<p>' . __( '<a href="http://friscotheme.com/plus" target="_blank">Frisco+</a>', 'friscotheme' ) . '</p>';
+		'<p>' . __( '<a href="http://wordpress.org/tags/frisco-for-buddypress" target="_blank">Free Support Forums</a>', 'friscotheme' ) . '</p>' ;
 
 	$screen = get_current_screen();
 
@@ -75,12 +65,7 @@ function frisco_theme_options_help() {
 			'content' => $tips,
 			)
 		);
-		$screen->add_help_tab( array(
-			'title' => __( 'Frisco+', 'friscotheme' ),
-			'id' => 'theme-options-frisco-plus',
-			'content' => $frisco_plus,
-			)
-		);
+
 
 		$screen->set_help_sidebar( $sidebar );
 	} else {
