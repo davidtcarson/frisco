@@ -386,4 +386,100 @@ endif;
  */ 
 get_template_part('plus');
 
+
+
+/**
+ * Theme Customizer  
+ *
+ * Included in WordPress 3.4+ 
+ * @since 1.6
+ */ 
+add_action( 'customize_register', 'frisco_customize_register' );
+function frisco_customize_register($wp_customize) {
+			
+		// Section
+		$wp_customize->add_section( 'frisco_theme_options_section', array(
+			'title'          => __( 'Theme Options', 'friscotheme' ),
+			'priority'       => 35,
+		) );
+		
+		// Color Setting
+		$wp_customize->add_setting( 'frisco_theme_options[themecolor]', array(
+			'default'        => 'default',
+			'type'           => 'option',
+			'capability'     => 'edit_theme_options',
+		) );
+
+		// Color Controls
+		$wp_customize->add_control( 'frisco_color_scheme', array(
+			'label'      => __( 'Color Scheme', 'themename' ),
+			'section'    => 'frisco_theme_options_section',
+			'settings'   => 'frisco_theme_options[themecolor]',
+			'type'       => 'radio',
+			'choices'    => array(
+				'default' => 'Default (Blue)',
+				'green' => 'Green',
+				'orange' => 'Orange',
+				'yellow' => 'Yellow',
+				'grey' => 'Grey',
+				'purple' => 'Purple',
+				),
+		) );
+		
+		// Title Font Setting
+		$wp_customize->add_setting( 'frisco_theme_options[googlefont]', array(
+			'default'        => 'Lobster Two',
+			'type'           => 'option',
+			'capability'     => 'edit_theme_options',
+		) );
+		
+		// Title Font Controls
+		$wp_customize->add_control( 'frisco_title_font_choice', array(
+			'label'   => 'Select a Google Font:',
+			'section' => 'frisco_theme_options_section',
+			'settings'   => 'frisco_theme_options[googlefont]',
+			'type'    => 'select',
+			'choices'    => array(
+				'Lobster Two' => 'Lobster Two',
+				'Quattrocento' => 'Quattrocento',
+				'Droid Sans' => 'Droid Sans',
+				'PT Sans' => 'PT Sans',
+				'Yanone Kaffeesatz' => 'Yanone Kaffeesatz',
+				'Cabin' => 'Cabin',
+				'Black Ops One' => 'Black Ops One',
+				'Nixie One' => 'Nixie One',
+				'Bangers' => 'Bangers',
+				'Monofett' => 'Monofett',
+				),
+		) );
+		
+		// Custom CSS Setting
+		$wp_customize->add_setting( 'frisco_theme_options[customcss]', array(
+			'type'           => 'option',
+			'capability'     => 'edit_theme_options',
+		) );
+
+		// Custom CSS Controls
+		$wp_customize->add_control( 'frisco_custom_css', array(
+			'settings' => 'frisco_theme_options[customcss]',
+			'label'    => 'Check this box to use a custom stylesheet. Create custom.css in the main theme directory.',
+			'section'  => 'frisco_theme_options_section',
+			'type'     => 'checkbox',
+		) );
+		
+		// Custom Functions Setting
+		$wp_customize->add_setting( 'frisco_theme_options[customphp]', array(
+			'type'           => 'option',
+			'capability'     => 'edit_theme_options',
+		) );
+
+		// Custom Functions Controls
+		$wp_customize->add_control( 'frisco_custom_functions', array(
+			'settings' => 'frisco_theme_options[customphp]',
+			'label'    => 'Check this box to use a custom functions file. Create functions-custom.php in the main theme directory.',
+			'section'  => 'frisco_theme_options_section',
+			'type'     => 'checkbox',
+		) );
+		
+}
 ?>
