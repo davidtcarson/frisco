@@ -16,19 +16,29 @@
  */
 
 
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) exit;
+
+// If BuddyPress is not activated, switch back to the default WP theme
+if ( ! defined( 'BP_VERSION' ) )
+ 	switch_theme( WP_DEFAULT_THEME, WP_DEFAULT_THEME );
+
+// Bail out if enough of BuddyPress isn't loaded
+ if ( ! function_exists( 'bp_is_active' ) )
+ 	return;
+
 /**
  * The bp_dtheme_setup() function is included conditionally in the BuddyPress default theme. 
  * The function was copied to this file and some things were removed because we don't need them. Ex. add_custom_background
  *
  * @since 1.5
- * @TODO: Look at pros/cons of using a unique function name instead of bp_dtheme_setup
  */
  
 function bp_dtheme_setup() {
 	global $bp;
 
 	// Load the AJAX functions for the theme
-	require( TEMPLATEPATH . '/_inc/ajax.php' );
+	include( get_template_directory() . '/_inc/ajax.php' );
 
 	// This theme styles the visual editor with editor-style.css to match the theme style.
 	add_editor_style();
@@ -387,9 +397,8 @@ endif;
 get_template_part('plus');
 
 
-
 /**
- * Theme Customizer  
+ * Theme Customizer Support
  *
  * Included in WordPress 3.4+ 
  * @since 1.6
@@ -401,6 +410,7 @@ function frisco_customize_register($wp_customize) {
 		$wp_customize->add_section( 'frisco_theme_options_section', array(
 			'title'          => __( 'Theme Options', 'friscotheme' ),
 			'priority'       => 35,
+			'description'  		=> __( 'Edit the color scheme or title font using the customizer. For more advanced customization, go to the Theme Options page.', 'friscotheme' ),
 		) );
 		
 		// Color Setting
@@ -453,33 +463,6 @@ function frisco_customize_register($wp_customize) {
 				),
 		) );
 		
-		// Custom CSS Setting
-		$wp_customize->add_setting( 'frisco_theme_options[customcss]', array(
-			'type'           => 'option',
-			'capability'     => 'edit_theme_options',
-		) );
-
-		// Custom CSS Controls
-		$wp_customize->add_control( 'frisco_custom_css', array(
-			'settings' => 'frisco_theme_options[customcss]',
-			'label'    => 'Check this box to use a custom stylesheet. Create custom.css in the main theme directory.',
-			'section'  => 'frisco_theme_options_section',
-			'type'     => 'checkbox',
-		) );
-		
-		// Custom Functions Setting
-		$wp_customize->add_setting( 'frisco_theme_options[customphp]', array(
-			'type'           => 'option',
-			'capability'     => 'edit_theme_options',
-		) );
-
-		// Custom Functions Controls
-		$wp_customize->add_control( 'frisco_custom_functions', array(
-			'settings' => 'frisco_theme_options[customphp]',
-			'label'    => 'Check this box to use a custom functions file. Create functions-custom.php in the main theme directory.',
-			'section'  => 'frisco_theme_options_section',
-			'type'     => 'checkbox',
-		) );
-		
+				
 }
 ?>
