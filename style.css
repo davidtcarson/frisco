@@ -1204,6 +1204,9 @@ body div.frisco_notice p a#close-notice {
 .group-create #group-create-body h4 {
 	margin-top: 1em; 
 }
+#item-body .standard-form div.submit {
+    margin-bottom: 1em;
+}
 /*--------------------------------------------------------------
 Media Queries 
 --------------------------------------------------------------*/
