@@ -13,6 +13,7 @@ Go to "Appearance > Theme Options" to configure basic color and font options or 
 Google Web Fonts - http://www.google.com/webfonts
 
 --- Changelog ---
+1.6.1 Add Member Capabilities template
 1.6 Update template files to match BuddyPress 1.6. Add support for Theme Customizer (WP 3.4+). Template files for plugins added.  
 1.5.04 Minor bug fixes 
 1.5.02 CSS bugs and readme.txt
